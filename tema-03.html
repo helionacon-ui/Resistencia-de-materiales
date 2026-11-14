@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T3 Propiedades estáticas de la sección · Resistencia de Materiales · Guía para aprobar</title>
+<meta name="description" content="Resistencia de Materiales (UPCT, GIEyA): tema 3, Propiedades estáticas de la sección">
+<meta name="theme-color" content="#1f5f8b">
+<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="style.css">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="hub-bar" style="max-width:1180px;margin:0 auto;padding:10px 16px 0"><a href="https://helionacon-ui.github.io/GIEIA-UPCT/" style="display:inline-flex;align-items:center;gap:6px;font:600 13.5px/1 system-ui,sans-serif;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none">← Todas las guías GIEyA</a><p class="fecha" style="margin:6px 0 0;max-width:none;font:13px/1.45 system-ui,sans-serif;color:var(--muted)">Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p></div>
+<div class="crumb"><a href="index.html">Resistencia de Materiales</a><span class="sep">›</span><span>Resistencia de Materiales</span><span class="sep">›</span><span>T3 · Propiedades estáticas de la sección</span></div><a href="#top" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+<div class="wrap" id="top">
+<nav aria-label="Índice" class="toc"><a href="index.html" style="--tc:var(--c0)">Portada</a><div class="grp">Empezar</div><a href="index.html#cero" style="--tc:var(--c0)">Empieza aquí desde cero</a><a href="plan.html" style="--tc:var(--c0)">Cómo es la evaluación</a><a href="index.html#progreso" style="--tc:var(--c0)">Tu progreso</a><div class="grp">Elasticidad</div><a href="tema-01.html" style="--tc:var(--c2)">T1 Conceptos fundamentales de elasticidad</a><a href="tema-02.html" style="--tc:var(--c3)">T2 Criterios de plasticidad y de rotura</a><div class="grp">Resistencia de Materiales</div><a href="tema-03.html" style="--tc:var(--c4)" class="on" aria-current="page">T3 Propiedades estáticas de la sección</a><a href="tema-04.html" style="--tc:var(--c5)">T4 El modelo de barras: leyes y diagramas de esfuerzos</a><a href="tema-05.html" style="--tc:var(--c6)">T5 El esfuerzo axil</a><a href="tema-06.html" style="--tc:var(--c7)">T6 Flexión pura y flexión desviada</a><a href="tema-07.html" style="--tc:var(--c8)">T7 Flexión simple: tensiones tangenciales</a><a href="tema-08.html" style="--tc:var(--c1)">T8 Flexión compuesta y núcleo central</a><a href="tema-09.html" style="--tc:var(--c2)">T9 Deformaciones debidas a flexión y fuerzas virtuales</a><a href="tema-10.html" style="--tc:var(--c3)">T10 Dimensionado de elementos estructurales</a><div class="grp">Practicar</div><a href="cuestiones.html" style="--tc:var(--c8)">Cuestiones de teoría respondidas</a><a href="examenes.html" style="--tc:var(--c8)">Problemas tipo resueltos</a><a href="problemas.html" style="--tc:var(--c8)">Los boletines oficiales</a><a href="laboratorio.html" style="--tc:var(--c7)">Prácticas y evaluación</a><a href="formulario.html" style="--tc:var(--c8)">Formulario</a></nav>
+<main>
+<section class="sec tema" style="--tc:var(--c4);--tcs:var(--c4s)">
+<div class="sh"><span aria-hidden="true" class="badge">3</span><div class="shx"><p class="kick">Resistencia de Materiales · Tema 3</p><h2 id="t3">Propiedades estáticas de la sección</h2><div class="tags"><span class="tag">Resistencia de Materiales</span><span class="tag">1.ª prueba (40 %)</span></div></div></div>
+<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Calcular área, centro de gravedad, momentos estáticos, momentos de inercia y producto de inercia de una sección compuesta, aplicar Steiner y obtener los ejes principales de inercia.</p><p>Las tensiones en una barra dependen de la <b>forma de la sección</b> a través de unas pocas magnitudes geométricas. Calcularlas bien es el 80 % del trabajo de los temas siguientes.</p>
+<ul><li><b>Área</b> \(A=\int dA\): manda en el esfuerzo axil.</li>
+<li><b>Momento estático</b> \(Q_z=\int y\,dA\): sirve para localizar el <b>centro de gravedad</b> (\(y_G=Q_z/A\)) y, en flexión simple, para las tensiones tangenciales. Respecto a un eje que pasa por el CDG, el momento estático es <b>cero</b>.</li>
+<li><b>Momentos de inercia</b> \(I_z=\int y^2dA\), \(I_y=\int z^2dA\): mandan en la flexión. Siempre positivos.</li>
+<li><b>Producto de inercia</b> \(I_{yz}=\int yz\,dA\): puede ser positivo, negativo o nulo. Es <b>cero</b> si la sección tiene un eje de simetría.</li></ul>
+<p><b>Teorema de Steiner</b>: trasladar un eje paralelo cuesta \(A\,d^2\). Es la herramienta para secciones compuestas: se descompone en rectángulos y círculos, se calcula cada inercia en su propio centro y se traslada al CDG del conjunto. Steiner <b>sólo vale desde el eje que pasa por el centro de gravedad</b> de cada trozo.</p>
+<p><b>Ejes principales de inercia</b>: aquellos en los que \(I_{yz}=0\). Las fórmulas de giro son idénticas a las de las tensiones (mismo círculo de Mohr), con \(I_y,I_z\) en lugar de \(\sigma_x,\sigma_y\) y \(-I_{yz}\) en lugar de \(\tau_{xy}\). Si la sección tiene un eje de simetría, ése y su perpendicular ya son principales.</p>
+<p>Por último, el <b>módulo resistente</b> \(W=I/c\) (con \(c\) la distancia a la fibra más alejada) es lo que se usa directamente en el dimensionado.</p></div>
+<details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 3 <span class="src">8 símbolos</span></summary><div class="inner">
+<div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">A</td><td>Área</td><td class="u">mm²</td></tr><tr><td class="sym">Q = ∫y dA</td><td>Momento estático</td><td class="u">mm³</td></tr><tr><td class="sym">y_G</td><td>Centro de gravedad</td><td class="u">Q/A</td></tr><tr><td class="sym">I_z = ∫y² dA</td><td>Momento de inercia</td><td class="u">mm⁴</td></tr><tr><td class="sym">I_yz</td><td>Producto de inercia</td><td class="u">0 si hay simetría</td></tr><tr><td class="sym">Steiner</td><td>I = I_G + A·d²</td><td class="u"></td></tr><tr><td class="sym">W = I/c</td><td>Módulo resistente</td><td class="u">mm³</td></tr><tr><td class="sym">i = √(I/A)</td><td>Radio de giro</td><td class="u">mm</td></tr></table></div></div></details>
+<figure class="fig"><p class="ft">Figura interactiva - centro de gravedad, Steiner y modulos resistentes</p><div data-sim="seccion"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
+<h3 id="t3-formulas">Lo que tienes que saber</h3>
+<div class="box key"><ul>
+<li>\(A=\sum A_i\); \(y_G=\dfrac{\sum A_iy_i}{\sum A_i}\), \(z_G=\dfrac{\sum A_iz_i}{\sum A_i}\).</li>
+<li><b>Steiner</b>: \(I_z=\sum\left(I_{z,i}^{G}+A_i\,d_{y,i}^2\right)\), \(I_{yz}=\sum\left(I_{yz,i}^{G}+A_i\,y_id_i\right)\) (distancias al CDG global).</li>
+<li>Rectángulo \(b\times h\): \(A=bh\), \(I_z=\dfrac{bh^3}{12}\), \(I_y=\dfrac{hb^3}{12}\), \(I_{yz}^G=0\).</li>
+<li>Círculo de diámetro \(d\): \(A=\dfrac{\pi d^2}{4}\), \(I=\dfrac{\pi d^4}{64}\); corona: \(I=\dfrac{\pi(D^4-d^4)}{64}\).</li>
+<li>Triángulo (base \(b\), altura \(h\)): \(A=\dfrac{bh}{2}\), \(I_z^G=\dfrac{bh^3}{36}\), CDG a \(h/3\) de la base.</li>
+<li>Momento estático del área por encima de una fibra: \(Q_z(y)=\displaystyle\int_y^{y_{max}}y\,b(y)\,dy=A^*\,\bar y^*\).</li>
+<li>Giro de ejes: \(I_{y'}=\frac{I_y+I_z}{2}+\frac{I_y-I_z}{2}\cos2\theta-I_{yz}\operatorname{sen}2\theta\); \(\tan2\theta_p=\dfrac{-2I_{yz}}{I_y-I_z}\).</li>
+<li>Principales: \(I_{1,2}=\frac{I_y+I_z}{2}\pm\sqrt{\left(\frac{I_y-I_z}{2}\right)^2+I_{yz}^2}\); \(I_1+I_2=I_y+I_z\) (invariante).</li>
+<li>Módulo resistente: \(W_{el}=\dfrac{I}{c}\); radio de giro \(i=\sqrt{I/A}\).</li></ul></div>
+<h3 id="t3-metodo">Cómo se resuelve</h3>
+<ol class="steps"><li><b>Divide</b> la sección en figuras simples y numéralas; las áreas que faltan (huecos) cuentan con <b>área negativa</b>.</li><li>Haz una <b>tabla</b>: \(A_i\), \(y_i\), \(z_i\), \(A_iy_i\), \(A_iz_i\).</li><li>Calcula el <b>CDG</b> global.</li><li>Amplía la tabla con \(I_{z,i}^G\), \(d_i=y_i-y_G\) y \(A_id_i^2\), y suma: ése es Steiner.</li><li>Si no hay simetría, calcula también \(I_{yz}\) y obtén los <b>ejes principales</b>.</li><li>Comprueba el orden de magnitud: una sección de canto h tiene \(I\approx\frac{Ah^2}{12}\) como referencia.</li></ol>
+<div class="box trap"><h4>Trampas típicas</h4><ul><li>Aplicar Steiner desde un eje que <b>no pasa por el CDG</b> del trozo.</li><li>Olvidar que un hueco resta: área e inercia <b>negativas</b>.</li><li>Confundir \(I_z=\frac{bh^3}{12}\) con \(I_y=\frac{hb^3}{12}\): el canto va siempre al <b>cubo</b> en el eje de flexión.</li><li>Dar \(I_{yz}\) siempre positivo: tiene signo, y es cero sólo si hay un eje de simetría.</li><li>Usar \(W=I/h\) en vez de \(I/c\) con \(c=\) distancia del CDG a la fibra extrema (en secciones asimétricas hay <b>dos</b> módulos resistentes distintos).</li></ul></div>
+<h3 id="t3-problema">Problema tipo</h3>
+<div class="prob"><div class="enun"><p class="et">Enunciado</p><p>Una sección en T está formada por un ala horizontal de 200 × 20 mm (arriba) y un alma vertical de 20 × 180 mm (debajo del ala). Calcular el área, la posición del centro de gravedad, el momento de inercia respecto al eje horizontal que pasa por él y los dos módulos resistentes.</p></div>
+<details class="paso"><summary><span class="pn">✓</span>Ver solución paso a paso</summary><div class="inner"><p>Tomamos el origen en la <b>cara inferior</b> del alma y el eje y hacia arriba.</p>
+<div class="tw"><table><tr><th>Trozo</th><th>\(A_i\) (mm²)</th><th>\(y_i\) (mm)</th><th>\(A_iy_i\) (mm³)</th></tr>
+<tr><td>Alma 20×180</td><td>3 600</td><td>90</td><td>324 000</td></tr>
+<tr><td>Ala 200×20</td><td>4 000</td><td>190</td><td>760 000</td></tr>
+<tr><td><b>Σ</b></td><td><b>7 600</b></td><td></td><td><b>1 084 000</b></td></tr></table></div>
+<p>\(y_G=\dfrac{1\,084\,000}{7\,600}=\mathbf{142{,}6\ mm}\) desde la base.</p>
+<p><b>Inercia por Steiner</b>:</p>
+<p>Alma: \(I^G=\dfrac{20\cdot180^3}{12}=9{,}72\cdot10^6\) mm⁴; \(d=90-142{,}6=-52{,}6\) mm ⇒ \(Ad^2=3600\cdot2767=9{,}96\cdot10^6\) mm⁴.</p>
+<p>Ala: \(I^G=\dfrac{200\cdot20^3}{12}=0{,}133\cdot10^6\) mm⁴; \(d=190-142{,}6=47{,}4\) mm ⇒ \(Ad^2=4000\cdot2247=8{,}99\cdot10^6\) mm⁴.</p>
+<p>\(I_z=9{,}72+9{,}96+0{,}13+8{,}99=\mathbf{28{,}8\cdot10^6\ mm^4}=2\,880\ \text{cm}^4\)</p>
+<p><b>Módulos resistentes</b> (la sección es asimétrica, hay dos):</p>
+<p>Fibra inferior, \(c_{inf}=142{,}6\) mm ⇒ \(W_{inf}=\dfrac{28{,}8\cdot10^6}{142{,}6}=\mathbf{2{,}02\cdot10^5\ mm^3}\)</p>
+<p>Fibra superior, \(c_{sup}=200-142{,}6=57{,}4\) mm ⇒ \(W_{sup}=\dfrac{28{,}8\cdot10^6}{57{,}4}=\mathbf{5{,}02\cdot10^5\ mm^3}\)</p>
+<p>El que manda en el dimensionado es el <b>menor</b> (fibra inferior), porque es donde la tensión será mayor. Por tener un eje vertical de simetría, \(I_{yz}=0\) y los ejes dibujados ya son <b>principales</b>.</p></div></details></div>
+<h3 id="t3-auto">Autoevaluación</h3>
+<p class="muted">Responde antes de desplegar.</p><details class="paso"><summary><span class="pn">1</span>¿Cuánto vale el momento estático respecto a un eje que pasa por el CDG?</summary><div class="inner"><p><b>Cero</b>, por definición de centro de gravedad: \(Q=\int y\,dA=A\,y_G=0\) si el eje pasa por G. Es la comprobación más rápida de que el CDG está bien calculado.</p></div></details><details class="paso"><summary><span class="pn">2</span>¿Cuándo es nulo el producto de inercia \(I_{yz}\)?</summary><div class="inner"><p>Cuando la sección tiene al menos un <b>eje de simetría</b> coincidente con uno de los ejes, o cuando los ejes son los <b>principales de inercia</b>.</p></div></details><details class="paso"><summary><span class="pn">3</span>¿Por qué el canto va al cubo en la inercia?</summary><div class="inner"><p>Porque \(I=\int y^2dA\) pondera cada fibra por el <b>cuadrado</b> de su distancia; integrando sobre el canto aparece \(h^3\). Por eso duplicar el canto multiplica la inercia por 8, mientras que duplicar el ancho sólo la duplica.</p></div></details><details class="paso"><summary><span class="pn">4</span>Una sección tiene un hueco interior. ¿Cómo se trata?</summary><div class="inner"><p>Con <b>área e inercia negativas</b>: se calcula la sección maciza y se le resta la del hueco, aplicando Steiner a ambas respecto al CDG del conjunto.</p></div></details><details class="paso"><summary><span class="pn">5</span>¿Qué es el módulo resistente y por qué puede haber dos?</summary><div class="inner"><p>\(W=I/c\), con c la distancia del CDG a la fibra considerada. En secciones <b>asimétricas</b> las distancias a la fibra superior e inferior son distintas, así que hay dos módulos; en el dimensionado manda el <b>menor</b>.</p></div></details>
+</section>
+<nav class="pager" aria-label="Páginas"><a href="tema-02.html"><small>← Anterior</small>T2 · Criterios de plasticidad y de rotura</a><a class="nx" href="tema-04.html"><small>Siguiente →</small>T4 · El modelo de barras: leyes y diagramas de esfuerzos</a></nav>
+<p class="inicio" style="margin:36px 0 8px;text-align:center;font-size:13px;color:var(--muted)">Guía no oficial de Resistencia de Materiales (UPCT, GIEyA) · Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p>
+</main>
+</div>
+<script src="app.js"></script>
+<script src="sims.js"></script>
+</body>
+</html>

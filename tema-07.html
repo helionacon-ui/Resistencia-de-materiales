@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T7 Flexión simple: tensiones tangenciales · Resistencia de Materiales · Guía para aprobar</title>
+<meta name="description" content="Resistencia de Materiales (UPCT, GIEyA): tema 7, Flexión simple: tensiones tangenciales">
+<meta name="theme-color" content="#1f5f8b">
+<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="style.css">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="hub-bar" style="max-width:1180px;margin:0 auto;padding:10px 16px 0"><a href="https://helionacon-ui.github.io/GIEIA-UPCT/" style="display:inline-flex;align-items:center;gap:6px;font:600 13.5px/1 system-ui,sans-serif;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none">← Todas las guías GIEyA</a><p class="fecha" style="margin:6px 0 0;max-width:none;font:13px/1.45 system-ui,sans-serif;color:var(--muted)">Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p></div>
+<div class="crumb"><a href="index.html">Resistencia de Materiales</a><span class="sep">›</span><span>Resistencia de Materiales</span><span class="sep">›</span><span>T7 · Flexión simple: tensiones tangenciales</span></div><a href="#top" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+<div class="wrap" id="top">
+<nav aria-label="Índice" class="toc"><a href="index.html" style="--tc:var(--c0)">Portada</a><div class="grp">Empezar</div><a href="index.html#cero" style="--tc:var(--c0)">Empieza aquí desde cero</a><a href="plan.html" style="--tc:var(--c0)">Cómo es la evaluación</a><a href="index.html#progreso" style="--tc:var(--c0)">Tu progreso</a><div class="grp">Elasticidad</div><a href="tema-01.html" style="--tc:var(--c2)">T1 Conceptos fundamentales de elasticidad</a><a href="tema-02.html" style="--tc:var(--c3)">T2 Criterios de plasticidad y de rotura</a><div class="grp">Resistencia de Materiales</div><a href="tema-03.html" style="--tc:var(--c4)">T3 Propiedades estáticas de la sección</a><a href="tema-04.html" style="--tc:var(--c5)">T4 El modelo de barras: leyes y diagramas de esfuerzos</a><a href="tema-05.html" style="--tc:var(--c6)">T5 El esfuerzo axil</a><a href="tema-06.html" style="--tc:var(--c7)">T6 Flexión pura y flexión desviada</a><a href="tema-07.html" style="--tc:var(--c8)" class="on" aria-current="page">T7 Flexión simple: tensiones tangenciales</a><a href="tema-08.html" style="--tc:var(--c1)">T8 Flexión compuesta y núcleo central</a><a href="tema-09.html" style="--tc:var(--c2)">T9 Deformaciones debidas a flexión y fuerzas virtuales</a><a href="tema-10.html" style="--tc:var(--c3)">T10 Dimensionado de elementos estructurales</a><div class="grp">Practicar</div><a href="cuestiones.html" style="--tc:var(--c8)">Cuestiones de teoría respondidas</a><a href="examenes.html" style="--tc:var(--c8)">Problemas tipo resueltos</a><a href="problemas.html" style="--tc:var(--c8)">Los boletines oficiales</a><a href="laboratorio.html" style="--tc:var(--c7)">Prácticas y evaluación</a><a href="formulario.html" style="--tc:var(--c8)">Formulario</a></nav>
+<main>
+<section class="sec tema" style="--tc:var(--c8);--tcs:var(--c8s)">
+<div class="sh"><span aria-hidden="true" class="badge">7</span><div class="shx"><p class="kick">Resistencia de Materiales · Tema 7</p><h2 id="t7">Flexión simple: tensiones tangenciales</h2><div class="tags"><span class="tag">Resistencia de Materiales</span><span class="tag">2.ª prueba (60 %)</span></div></div></div>
+<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Calcular la distribución de tensiones tangenciales debidas al esfuerzo cortante con la fórmula de Colignon-Jourawski y combinarlas con las normales.</p><p>La <b>flexión simple</b> es flexión con cortante: además de \(\sigma_x\) aparecen tensiones tangenciales \(\tau\). Su distribución se obtiene con la <b>fórmula de Colignon-Jourawski</b>:</p>
+<p>\(\tau=\dfrac{V\,Q(y)}{I\,b(y)}\)</p>
+<p>donde \(Q(y)\) es el <b>momento estático</b> del área situada por encima (o por debajo) de la fibra estudiada, respecto al eje neutro, y \(b(y)\) el ancho de la sección a esa altura.</p>
+<p>Consecuencias importantes:</p>
+<ul><li>\(\tau=0\) en las fibras extremas (allí \(Q=0\)) y <b>máxima en el eje neutro</b> (donde \(Q\) es máximo), justo al revés que \(\sigma\).</li>
+<li>En una sección <b>rectangular</b>, la distribución es <b>parabólica</b> y \(\tau_{max}=\frac{3}{2}\frac{V}{A}\): un 50 % más que el valor medio.</li>
+<li>En un <b>perfil en I</b>, el alma se lleva casi todo el cortante: \(\tau_{max}\approx\frac{V}{A_{alma}}\), y en el cambio de ancho ala-alma hay un <b>salto</b> en \(\tau\) porque cambia \(b(y)\).</li></ul>
+<p>El punto más solicitado de una viga no es necesariamente el de \(\sigma\) máxima: en el <b>encuentro ala-alma</b> de un perfil I coexisten una \(\sigma\) alta y una \(\tau\) alta, y es ahí donde la tensión equivalente de von Mises suele ser crítica.</p></div>
+<details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 7 <span class="src">7 símbolos</span></summary><div class="inner">
+<div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">τ = VQ/(Ib)</td><td>Colignon-Jourawski</td><td class="u"></td></tr><tr><td class="sym">Q(y)</td><td>Momento estático por encima</td><td class="u">mm³</td></tr><tr><td class="sym">b(y)</td><td>Ancho a esa altura</td><td class="u">mm</td></tr><tr><td class="sym">τ máx rect</td><td>1,5·V/A</td><td class="u">eje neutro</td></tr><tr><td class="sym">τ máx perfil I</td><td>≈ V/A_alma</td><td class="u"></td></tr><tr><td class="sym">q = τ·b</td><td>Flujo de cortante</td><td class="u">N/mm</td></tr><tr><td class="sym">σ_eq</td><td>√(σ²+3τ²)</td><td class="u">von Mises</td></tr></table></div></div></details>
+<figure class="fig"><p class="ft">Figura interactiva - distribucion de tensiones normales y tangenciales</p><div data-sim="tangencial"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
+<h3 id="t7-formulas">Lo que tienes que saber</h3>
+<div class="box key"><ul>
+<li>Colignon-Jourawski: \(\tau=\dfrac{V\,Q(y)}{I\,b(y)}\), con \(Q(y)=A^*\bar y^*\) (área por encima de la fibra × distancia de su centroide al eje neutro).</li>
+<li>Rectángulo \(b\times h\): \(\tau(y)=\dfrac{3V}{2A}\left[1-\left(\dfrac{2y}{h}\right)^2\right]\), \(\tau_{max}=\dfrac{3V}{2A}\) en el eje neutro.</li>
+<li>Círculo macizo: \(\tau_{max}=\dfrac{4V}{3A}\); tubo de pared delgada: \(\tau_{max}=\dfrac{2V}{A}\).</li>
+<li>Perfil en I (aproximación práctica): \(\tau_{max}\approx\dfrac{V}{A_{alma}}=\dfrac{V}{h_w t_w}\).</li>
+<li>Flujo de cortante: \(q=\tau\,b=\dfrac{VQ}{I}\) (N/mm); sirve para dimensionar soldaduras y tornillos: \(s=\dfrac{n\,F_{adm}}{q}\).</li>
+<li>Combinación: \(\sigma_{eq}=\sqrt{\sigma_x^2+3\tau^2}\le f_{yd}\) (von Mises).</li>
+<li>Caso general (flexión desviada con cortante), del formulario: \(\tau_{xz}=\dfrac{1}{b(z)}\left[\dfrac{Q_z(z)I_y-Q_y(z)I_{yz}}{I_yI_z-I_{yz}^2}V_y+\dfrac{Q_y(z)I_z-Q_z(z)I_{yz}}{I_yI_z-I_{yz}^2}V_z\right]\).</li></ul></div>
+<h3 id="t7-metodo">Cómo se resuelve</h3>
+<ol class="steps"><li>Obtén \(V\) y \(M\) de la sección crítica (tema 4) y las propiedades de la sección (tema 3).</li><li>Para la distribución de \(\tau\), <b>corta a varias alturas</b>: fibra extrema (τ = 0), encuentro ala-alma (dos valores, uno con b del ala y otro con b del alma) y eje neutro (τ máxima).</li><li>Calcula \(Q\) como «área que queda por encima × distancia de su centro de gravedad al eje neutro».</li><li>Dibuja la distribución: parabólica por tramos, con saltos donde cambia el ancho.</li><li>Calcula también \(\sigma_x\) en los mismos puntos y combina con <b>von Mises</b>.</li><li>Comprueba el orden de magnitud: \(\tau_{max}\) debe quedar entre \(V/A\) y \(2V/A\) según la forma.</li></ol>
+<div class="box trap"><h4>Trampas típicas</h4><ul><li>Usar el ancho total del ala donde el cortante lo resiste el <b>alma</b>: el salto de \(\tau\) sale de ese cambio de \(b(y)\).</li><li>Calcular \(Q\) respecto a un eje que no es el <b>neutro</b>.</li><li>Tomar \(\tau_{max}=V/A\) en una sección rectangular: es \(1{,}5\,V/A\).</li><li>Olvidar que \(\tau\) es nula en las fibras extremas y \(\sigma\) máxima allí: son distribuciones <b>complementarias</b>.</li><li>Comprobar von Mises sólo en la fibra extrema y no en el encuentro ala-alma, que suele ser el punto crítico real.</li></ul></div>
+<h3 id="t7-problema">Problema tipo</h3>
+<div class="prob"><div class="enun"><p class="et">Enunciado</p><p>Una viga de sección rectangular 120 × 300 mm (ancho × canto) soporta en una sección \(V=90\) kN y \(M=75\) kN·m. a) Distribución de tensiones tangenciales y su valor máximo. b) Tensión normal máxima. c) Comprobar por von Mises en la fibra extrema, en el eje neutro y a media altura (y = 75 mm), para un acero S275.</p></div>
+<details class="paso"><summary><span class="pn">✓</span>Ver solución paso a paso</summary><div class="inner"><p><b>Propiedades</b>: \(A=120\cdot300=36\,000\) mm², \(I=\dfrac{120\cdot300^3}{12}=270\cdot10^6\) mm⁴, \(W=\dfrac{I}{150}=1{,}8\cdot10^6\) mm³.</p>
+<p>a) Distribución parabólica:</p>
+<p>\(\tau_{max}=\dfrac{3V}{2A}=\dfrac{3\cdot90\,000}{2\cdot36\,000}=\mathbf{3{,}75\ MPa}\) en el eje neutro; \(\tau=0\) en las fibras extremas.</p>
+<p>A media altura (\(y=75\) mm, es decir \(2y/h=0{,}5\)): \(\tau=3{,}75\left[1-0{,}5^2\right]=\mathbf{2{,}81\ MPa}\).</p>
+<p>b) \(\sigma_{max}=\dfrac{M}{W}=\dfrac{75\cdot10^6}{1{,}8\cdot10^6}=\mathbf{41{,}7\ MPa}\) (tracción abajo, compresión arriba).</p>
+<p>c) <b>Von Mises</b> en los tres puntos:</p>
+<div class="tw"><table><tr><th>Punto</th><th>σ (MPa)</th><th>τ (MPa)</th><th>\(\sigma_{eq}=\sqrt{\sigma^2+3\tau^2}\)</th></tr>
+<tr><td>Fibra extrema (y = 150)</td><td>41,7</td><td>0</td><td><b>41,7</b></td></tr>
+<tr><td>Media altura (y = 75)</td><td>20,8</td><td>2,81</td><td>21,4</td></tr>
+<tr><td>Eje neutro (y = 0)</td><td>0</td><td>3,75</td><td>6,5</td></tr></table></div>
+<p>El punto crítico es la <b>fibra extrema</b>, con 41,7 MPa frente a \(f_{yd}=275/1{,}05=261{,}9\) MPa ⇒ aprovechamiento del 16 %: la sección va holgada.</p>
+<p><b>Observación</b>: en una sección maciza las tangenciales son casi irrelevantes frente a las normales. La cosa cambia en vigas <b>cortas y de alma delgada</b>, donde el cortante sí gobierna.</p></div></details></div>
+<h3 id="t7-auto">Autoevaluación</h3>
+<p class="muted">Responde antes de desplegar.</p><details class="paso"><summary><span class="pn">1</span>¿Dónde es máxima la tensión tangencial en una sección rectangular?</summary><div class="inner"><p>En el <b>eje neutro</b>, donde el momento estático Q es máximo, y vale \(\tau_{max}=\frac{3V}{2A}\). En las fibras extremas es nula.</p></div></details><details class="paso"><summary><span class="pn">2</span>¿Qué representa Q(y) en la fórmula de Jourawski?</summary><div class="inner"><p>El <b>momento estático respecto al eje neutro</b> del área de la sección que queda por encima (o por debajo) de la fibra estudiada: \(Q=A^*\bar y^*\).</p></div></details><details class="paso"><summary><span class="pn">3</span>¿Por qué salta la tensión tangencial en el encuentro ala-alma de un perfil I?</summary><div class="inner"><p>Porque cambia bruscamente el <b>ancho</b> \(b(y)\): el mismo flujo de cortante \(q=VQ/I\) repartido en un espesor mucho menor da una tensión mucho mayor. El salto es en la proporción \(b_{ala}/t_{alma}\).</p></div></details><details class="paso"><summary><span class="pn">4</span>¿Por qué el alma de un perfil I se lleva casi todo el cortante?</summary><div class="inner"><p>Porque es donde \(b(y)\) es pequeño y Q grande; en la práctica se admite \(\tau_{max}\approx V/A_{alma}\). Las alas, en cambio, se llevan casi toda la flexión.</p></div></details><details class="paso"><summary><span class="pn">5</span>¿Dónde suele ser crítica la comprobación de von Mises en un perfil I?</summary><div class="inner"><p>En el <b>encuentro ala-alma</b>: allí la tensión normal es casi la máxima y la tangencial también es alta, y \(\sqrt{\sigma^2+3\tau^2}\) puede superar a la de la fibra extrema.</p></div></details>
+</section>
+<nav class="pager" aria-label="Páginas"><a href="tema-06.html"><small>← Anterior</small>T6 · Flexión pura y flexión desviada</a><a class="nx" href="tema-08.html"><small>Siguiente →</small>T8 · Flexión compuesta y núcleo central</a></nav>
+<p class="inicio" style="margin:36px 0 8px;text-align:center;font-size:13px;color:var(--muted)">Guía no oficial de Resistencia de Materiales (UPCT, GIEyA) · Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p>
+</main>
+</div>
+<script src="app.js"></script>
+<script src="sims.js"></script>
+</body>
+</html>

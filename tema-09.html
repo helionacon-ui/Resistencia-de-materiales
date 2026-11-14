@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T9 Deformaciones debidas a flexión y fuerzas virtuales · Resistencia de Materiales · Guía para aprobar</title>
+<meta name="description" content="Resistencia de Materiales (UPCT, GIEyA): tema 9, Deformaciones debidas a flexión y fuerzas virtuales">
+<meta name="theme-color" content="#1f5f8b">
+<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="style.css">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="hub-bar" style="max-width:1180px;margin:0 auto;padding:10px 16px 0"><a href="https://helionacon-ui.github.io/GIEIA-UPCT/" style="display:inline-flex;align-items:center;gap:6px;font:600 13.5px/1 system-ui,sans-serif;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none">← Todas las guías GIEyA</a><p class="fecha" style="margin:6px 0 0;max-width:none;font:13px/1.45 system-ui,sans-serif;color:var(--muted)">Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p></div>
+<div class="crumb"><a href="index.html">Resistencia de Materiales</a><span class="sep">›</span><span>Resistencia de Materiales</span><span class="sep">›</span><span>T9 · Deformaciones debidas a flexión y fuerzas virtuales</span></div><a href="#top" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+<div class="wrap" id="top">
+<nav aria-label="Índice" class="toc"><a href="index.html" style="--tc:var(--c0)">Portada</a><div class="grp">Empezar</div><a href="index.html#cero" style="--tc:var(--c0)">Empieza aquí desde cero</a><a href="plan.html" style="--tc:var(--c0)">Cómo es la evaluación</a><a href="index.html#progreso" style="--tc:var(--c0)">Tu progreso</a><div class="grp">Elasticidad</div><a href="tema-01.html" style="--tc:var(--c2)">T1 Conceptos fundamentales de elasticidad</a><a href="tema-02.html" style="--tc:var(--c3)">T2 Criterios de plasticidad y de rotura</a><div class="grp">Resistencia de Materiales</div><a href="tema-03.html" style="--tc:var(--c4)">T3 Propiedades estáticas de la sección</a><a href="tema-04.html" style="--tc:var(--c5)">T4 El modelo de barras: leyes y diagramas de esfuerzos</a><a href="tema-05.html" style="--tc:var(--c6)">T5 El esfuerzo axil</a><a href="tema-06.html" style="--tc:var(--c7)">T6 Flexión pura y flexión desviada</a><a href="tema-07.html" style="--tc:var(--c8)">T7 Flexión simple: tensiones tangenciales</a><a href="tema-08.html" style="--tc:var(--c1)">T8 Flexión compuesta y núcleo central</a><a href="tema-09.html" style="--tc:var(--c2)" class="on" aria-current="page">T9 Deformaciones debidas a flexión y fuerzas virtuales</a><a href="tema-10.html" style="--tc:var(--c3)">T10 Dimensionado de elementos estructurales</a><div class="grp">Practicar</div><a href="cuestiones.html" style="--tc:var(--c8)">Cuestiones de teoría respondidas</a><a href="examenes.html" style="--tc:var(--c8)">Problemas tipo resueltos</a><a href="problemas.html" style="--tc:var(--c8)">Los boletines oficiales</a><a href="laboratorio.html" style="--tc:var(--c7)">Prácticas y evaluación</a><a href="formulario.html" style="--tc:var(--c8)">Formulario</a></nav>
+<main>
+<section class="sec tema" style="--tc:var(--c2);--tcs:var(--c2s)">
+<div class="sh"><span aria-hidden="true" class="badge">9</span><div class="shx"><p class="kick">Resistencia de Materiales · Tema 9</p><h2 id="t9">Deformaciones debidas a flexión y fuerzas virtuales</h2><div class="tags"><span class="tag">Resistencia de Materiales</span><span class="tag">2.ª prueba (60 %)</span></div></div></div>
+<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Calcular giros y desplazamientos en vigas y pórticos isostáticos por integración de la elástica y, sobre todo, con el teorema de las fuerzas virtuales.</p><p>Además de resistir, una estructura debe <b>deformarse poco</b>. La ecuación de la elástica relaciona la flecha con el flector:</p>
+<p>\(EI\dfrac{d^2v}{dx^2}=M(x)\)</p>
+<p>Integrando dos veces y aplicando las condiciones de contorno (flecha nula en apoyos, flecha y giro nulos en empotramientos) se obtienen giro y flecha. Es sistemático pero lento.</p>
+<p>El método que pide el examen es el <b>teorema de las fuerzas virtuales (PFV)</b>, que da directamente el desplazamiento de <b>un punto</b> en <b>una dirección</b>:</p>
+<p>\(1\cdot\delta=\displaystyle\sum_j\int_0^{L_j}\left[\frac{N_j^*N_j}{E_jA_j}+\frac{M_j^*M_j}{E_jI_j}\right]dx\)</p>
+<p>donde las magnitudes con asterisco son las del <b>sistema virtual</b> (la estructura con una carga unidad en el punto y la dirección del desplazamiento buscado) y las otras, las del <b>sistema real</b>.</p>
+<p>Si se busca un <b>giro</b>, la carga virtual es un <b>momento unidad</b> en vez de una fuerza. En vigas y pórticos de edificación, el término del axil suele ser despreciable frente al de flexión (el enunciado lo suele decir expresamente).</p>
+<p>La integral se resuelve tramo a tramo. Como ambos diagramas son polinomios sencillos, es útil memorizar las <b>tablas de Mohr</b> (producto de dos diagramas), por ejemplo: dos triángulos con el vértice en el mismo extremo dan \(\frac{L}{3}M^*M\); triángulo por constante, \(\frac{L}{2}M^*M\); parábola por triángulo, \(\frac{L}{4}\cdots\).</p></div>
+<details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 9 <span class="src">8 símbolos</span></summary><div class="inner">
+<div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">EIv″ = M</td><td>Ecuación de la elástica</td><td class="u"></td></tr><tr><td class="sym">δ</td><td>Flecha</td><td class="u">mm</td></tr><tr><td class="sym">θ</td><td>Giro</td><td class="u">rad</td></tr><tr><td class="sym">PFV</td><td>1·δ = ∫M*M/EI dx</td><td class="u"></td></tr><tr><td class="sym">M*</td><td>Momento del sistema virtual</td><td class="u"></td></tr><tr><td class="sym">carga unidad</td><td>Fuerza (δ) o momento (θ)</td><td class="u"></td></tr><tr><td class="sym">5qL⁴/384EI</td><td>Biapoyada con q</td><td class="u"></td></tr><tr><td class="sym">PL³/3EI</td><td>Ménsula con P</td><td class="u"></td></tr></table></div></div></details>
+<figure class="fig"><p class="ft">Figura interactiva - flecha y estados limite de servicio</p><div data-sim="flecha"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
+<h3 id="t9-formulas">Lo que tienes que saber</h3>
+<div class="box key"><ul>
+<li>Elástica: \(EIv''=M(x)\); \(\theta=v'\).</li>
+<li><b>PFV</b>: \(1\cdot\delta=\sum\displaystyle\int\frac{M^*M}{EI}dx+\sum\int\frac{N^*N}{EA}dx\) (+ términos de cortante y torsión si se consideran).</li>
+<li>Para un giro: la carga virtual es un momento unidad; \(1\cdot\theta=\sum\int\frac{M^*M}{EI}dx\).</li>
+<li>Integrales de Mohr más usadas (con \(M^*\) y \(M\) sobre un tramo de longitud L):
+<br>constante × constante: \(L\,M^*M\); triángulo × triángulo (mismo vértice): \(\frac{L}{3}M^*M\);
+<br>triángulo × triángulo (vértices opuestos): \(\frac{L}{6}M^*M\); constante × triángulo: \(\frac{L}{2}M^*M\);
+<br>constante × parábola: \(\frac{2L}{3}M^*M\); triángulo × parábola: \(\frac{L}{4}M^*M\).</li>
+<li>Flechas típicas: biapoyada con P centrada \(\delta=\frac{PL^3}{48EI}\); biapoyada con q \(\delta=\frac{5qL^4}{384EI}\);
+ménsula con P en punta \(\delta=\frac{PL^3}{3EI}\); ménsula con q \(\delta=\frac{qL^4}{8EI}\).</li>
+<li>Giros: biapoyada con q, \(\theta_{apoyo}=\frac{qL^3}{24EI}\); ménsula con P, \(\theta=\frac{PL^2}{2EI}\).</li>
+<li>Barra con axil: \(\delta=\sum\frac{N^*NL}{EA}\) (celosías).</li></ul></div>
+<h3 id="t9-metodo">Cómo se resuelve</h3>
+<ol class="steps"><li>Resuelve el <b>sistema real</b>: reacciones y ley \(M(x)\) tramo a tramo.</li><li>Monta el <b>sistema virtual</b>: la misma estructura descargada, con una fuerza unidad en el punto y la dirección del desplazamiento pedido (o un momento unidad si piden un giro).</li><li>Obtén \(M^*(x)\) con el mismo origen y criterio de signos que \(M(x)\). <b>Esto es crítico</b>: si cambias el criterio entre los dos sistemas, el signo sale mal.</li><li>Integra tramo a tramo, con las tablas de Mohr si los diagramas son sencillos.</li><li>Suma y <b>interpreta el signo</b>: positivo = el desplazamiento tiene el sentido de la carga unidad.</li><li>Comprueba el orden de magnitud con una fórmula tabulada parecida (\(PL^3/EI\) o \(qL^4/EI\)).</li></ol>
+<div class="box trap"><h4>Trampas típicas</h4><ul><li>Usar criterios de signos o orígenes distintos en el sistema real y en el virtual.</li><li>Poner una fuerza unidad cuando piden un <b>giro</b> (hay que poner un momento unidad).</li><li>Olvidar algún tramo de la estructura en el sumatorio.</li><li>Incluir el término del axil cuando el enunciado dice expresamente que se desprecia (o despreciarlo en una celosía, donde es el único).</li><li>Equivocar el signo final: no es un error de cálculo, es <b>información</b> sobre el sentido del desplazamiento.</li></ul></div>
+<h3 id="t9-problema">Problema tipo</h3>
+<div class="prob"><div class="enun"><p class="et">Enunciado</p><p><b>(Convocatoria de junio de 2023, parcial 1, problema 2)</b> Obtener, mediante el teorema de las fuerzas virtuales, el desplazamiento vertical del punto C en una ménsula de longitud \(2L\) con una carga puntual \(P\) en su extremo. Datos: \(E=210\) GPa, \(I=8{,}356\cdot10^{-5}\) m⁴, \(L=2\) m, \(P=10\) kN. Despreciar las deformaciones debidas al axil.</p></div>
+<details class="paso"><summary><span class="pn">✓</span>Ver solución paso a paso</summary><div class="inner"><p><b>Sistema real.</b> Ménsula empotrada en A y libre en C, con P hacia abajo en C. Midiendo \(s\) desde el extremo libre:</p>
+<p>\(M(s)=-P\,s\), con \(s\in[0,\,2L]\).</p>
+<p><b>Sistema virtual.</b> La misma ménsula, descargada, con una fuerza unidad vertical hacia abajo en C:</p>
+<p>\(M^*(s)=-1\cdot s\)</p>
+<p><b>Integral del PFV</b> (sólo flexión):</p>
+<p>\(1\cdot\delta_C=\displaystyle\int_0^{2L}\frac{M^*M}{EI}ds=\frac{1}{EI}\int_0^{2L}(-s)(-Ps)\,ds=\frac{P}{EI}\int_0^{2L}s^2ds=\frac{P}{EI}\cdot\frac{(2L)^3}{3}=\frac{8PL^3}{3EI}\)</p>
+<p>Que es la fórmula conocida \(\delta=\dfrac{P\ell^3}{3EI}\) con \(\ell=2L\) ✓.</p>
+<p><b>Sustituyendo</b>: \(\ell=2L=4\) m, \(EI=210\cdot10^9\cdot8{,}356\cdot10^{-5}=1{,}755\cdot10^7\) N·m².</p>
+<p>\(\delta_C=\dfrac{10\,000\cdot4^3}{3\cdot1{,}755\cdot10^7}=\dfrac{640\,000}{5{,}264\cdot10^7}=\mathbf{0{,}01216\ m}=12{,}2\ mm\)</p>
+<p>El signo positivo indica que el desplazamiento tiene <b>el mismo sentido que la carga unidad</b>, es decir, hacia abajo.</p>
+<p><b>Comprobación de servicio</b>: la flecha admisible habitual es \(\ell/300=13{,}3\) mm, así que la viga cumple por los pelos. Es muy típico que en estas vigas mande la <b>deformación</b> y no la resistencia.</p></div></details></div>
+<h3 id="t9-auto">Autoevaluación</h3>
+<p class="muted">Responde antes de desplegar.</p><details class="paso"><summary><span class="pn">1</span>¿Qué sistema virtual hay que montar para calcular un giro?</summary><div class="inner"><p>La estructura descargada con un <b>momento unidad</b> aplicado en el punto cuyo giro se busca; con una fuerza unidad se obtendría un desplazamiento, no un giro.</p></div></details><details class="paso"><summary><span class="pn">2</span>¿Qué significa que el resultado del PFV salga negativo?</summary><div class="inner"><p>Que el desplazamiento real tiene <b>sentido contrario</b> al de la carga unidad que se puso. No es un error: es la respuesta.</p></div></details><details class="paso"><summary><span class="pn">3</span>¿Por qué se desprecia el término del axil en vigas y pórticos?</summary><div class="inner"><p>Porque \(EA\) es varios órdenes de magnitud mayor que \(EI/L^2\): la deformación por flexión domina. En <b>celosías</b>, en cambio, es justo al revés y el único término que cuenta es el del axil.</p></div></details><details class="paso"><summary><span class="pn">4</span>Flecha de una viga biapoyada con carga uniforme.</summary><div class="inner"><p>\(\delta=\frac{5qL^4}{384EI}\) en el centro. Para una ménsula con la misma carga, \(\frac{qL^4}{8EI}\), casi 10 veces mayor.</p></div></details><details class="paso"><summary><span class="pn">5</span>¿Qué condiciones de contorno se usan al integrar la elástica?</summary><div class="inner"><p>Flecha nula en los apoyos; flecha <b>y giro</b> nulos en un empotramiento; y continuidad de flecha y giro entre tramos. Dan las constantes de integración.</p></div></details>
+</section>
+<nav class="pager" aria-label="Páginas"><a href="tema-08.html"><small>← Anterior</small>T8 · Flexión compuesta y núcleo central</a><a class="nx" href="tema-10.html"><small>Siguiente →</small>T10 · Dimensionado de elementos estructurales</a></nav>
+<p class="inicio" style="margin:36px 0 8px;text-align:center;font-size:13px;color:var(--muted)">Guía no oficial de Resistencia de Materiales (UPCT, GIEyA) · Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p>
+</main>
+</div>
+<script src="app.js"></script>
+<script src="sims.js"></script>
+</body>
+</html>

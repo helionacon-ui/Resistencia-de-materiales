@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T10 Dimensionado de elementos estructurales · Resistencia de Materiales · Guía para aprobar</title>
+<meta name="description" content="Resistencia de Materiales (UPCT, GIEyA): tema 10, Dimensionado de elementos estructurales">
+<meta name="theme-color" content="#1f5f8b">
+<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="style.css">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="hub-bar" style="max-width:1180px;margin:0 auto;padding:10px 16px 0"><a href="https://helionacon-ui.github.io/GIEIA-UPCT/" style="display:inline-flex;align-items:center;gap:6px;font:600 13.5px/1 system-ui,sans-serif;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none">← Todas las guías GIEyA</a><p class="fecha" style="margin:6px 0 0;max-width:none;font:13px/1.45 system-ui,sans-serif;color:var(--muted)">Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p></div>
+<div class="crumb"><a href="index.html">Resistencia de Materiales</a><span class="sep">›</span><span>Resistencia de Materiales</span><span class="sep">›</span><span>T10 · Dimensionado de elementos estructurales</span></div><a href="#top" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+<div class="wrap" id="top">
+<nav aria-label="Índice" class="toc"><a href="index.html" style="--tc:var(--c0)">Portada</a><div class="grp">Empezar</div><a href="index.html#cero" style="--tc:var(--c0)">Empieza aquí desde cero</a><a href="plan.html" style="--tc:var(--c0)">Cómo es la evaluación</a><a href="index.html#progreso" style="--tc:var(--c0)">Tu progreso</a><div class="grp">Elasticidad</div><a href="tema-01.html" style="--tc:var(--c2)">T1 Conceptos fundamentales de elasticidad</a><a href="tema-02.html" style="--tc:var(--c3)">T2 Criterios de plasticidad y de rotura</a><div class="grp">Resistencia de Materiales</div><a href="tema-03.html" style="--tc:var(--c4)">T3 Propiedades estáticas de la sección</a><a href="tema-04.html" style="--tc:var(--c5)">T4 El modelo de barras: leyes y diagramas de esfuerzos</a><a href="tema-05.html" style="--tc:var(--c6)">T5 El esfuerzo axil</a><a href="tema-06.html" style="--tc:var(--c7)">T6 Flexión pura y flexión desviada</a><a href="tema-07.html" style="--tc:var(--c8)">T7 Flexión simple: tensiones tangenciales</a><a href="tema-08.html" style="--tc:var(--c1)">T8 Flexión compuesta y núcleo central</a><a href="tema-09.html" style="--tc:var(--c2)">T9 Deformaciones debidas a flexión y fuerzas virtuales</a><a href="tema-10.html" style="--tc:var(--c3)" class="on" aria-current="page">T10 Dimensionado de elementos estructurales</a><div class="grp">Practicar</div><a href="cuestiones.html" style="--tc:var(--c8)">Cuestiones de teoría respondidas</a><a href="examenes.html" style="--tc:var(--c8)">Problemas tipo resueltos</a><a href="problemas.html" style="--tc:var(--c8)">Los boletines oficiales</a><a href="laboratorio.html" style="--tc:var(--c7)">Prácticas y evaluación</a><a href="formulario.html" style="--tc:var(--c8)">Formulario</a></nav>
+<main>
+<section class="sec tema" style="--tc:var(--c3);--tcs:var(--c3s)">
+<div class="sh"><span aria-hidden="true" class="badge">10</span><div class="shx"><p class="kick">Resistencia de Materiales · Tema 10</p><h2 id="t10">Dimensionado de elementos estructurales</h2><div class="tags"><span class="tag">Resistencia de Materiales</span><span class="tag">2.ª prueba (60 %)</span></div></div></div>
+<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Comprobar y dimensionar secciones metálicas frente a los esfuerzos combinados, aplicando los criterios normativos de resistencia y los estados límite de servicio.</p><p>Dimensionar es responder a dos preguntas: <b>¿resiste?</b> (estado límite último, ELU) y <b>¿se deforma poco?</b> (estado límite de servicio, ELS).</p>
+<p><b>Resistencia</b>: se compara la tensión de cálculo con la resistencia de cálculo del material:</p>
+<p>\(\sigma_{x,Ed}=\dfrac{N_{Ed}}{A}+\dfrac{M_{y,Ed}}{W_{el,y}}+\dfrac{M_{z,Ed}}{W_{el,z}}\le f_{yd}=\dfrac{f_y}{\gamma_{M0}}\)</p>
+<p>con \(\gamma_{M0}=1{,}05\) para acero. Cuando hay tensión tangencial apreciable, se comprueba la combinación con <b>von Mises</b>: \(\sqrt{\sigma^2+3\tau^2}\le f_{yd}\).</p>
+<p><b>Proceso de dimensionado</b> (al revés que la comprobación): se calcula el <b>módulo resistente necesario</b> \(W_{nec}=\frac{M_{Ed}}{f_{yd}}\) y se busca en el prontuario el perfil más ligero que lo supere. Después se comprueban cortante, flecha y, si procede, pandeo.</p>
+<p><b>Servicio</b>: la flecha se limita a una fracción de la luz, típicamente \(L/300\) o \(L/400\). Con cargas <b>sin mayorar</b> (características), no con las de cálculo. En vigas largas y poco cargadas, este criterio es el que manda y obliga a subir de perfil aunque sobre resistencia.</p>
+<p>Un detalle que marca la diferencia: <b>subir el canto</b> es mucho más eficaz que subir el ancho, porque \(W\propto h^2\) y la flecha \(\propto1/h^3\). Por eso los perfiles IPE son altos y estrechos.</p></div>
+<details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 10 <span class="src">8 símbolos</span></summary><div class="inner">
+<div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">N_Ed, M_Ed, V_Ed</td><td>Esfuerzos de cálculo</td><td class="u">mayorados</td></tr><tr><td class="sym">f_yd</td><td>f_y/γ_M0</td><td class="u">261,9 MPa en S275</td></tr><tr><td class="sym">W_nec</td><td>M_Ed/f_yd</td><td class="u">cm³</td></tr><tr><td class="sym">η</td><td>Aprovechamiento</td><td class="u">σ_Ed/f_yd</td></tr><tr><td class="sym">ELU</td><td>Estado límite último</td><td class="u">resistencia</td></tr><tr><td class="sym">ELS</td><td>Estado límite de servicio</td><td class="u">flecha</td></tr><tr><td class="sym">L/300</td><td>Flecha admisible típica</td><td class="u"></td></tr><tr><td class="sym">γ_G, γ_Q</td><td>1,35 y 1,50</td><td class="u">mayoración</td></tr></table></div></div></details>
+<figure class="fig"><p class="ft">Figura interactiva - eleccion de perfil por resistencia y por flecha</p><div data-sim="dimensionado"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
+<h3 id="t10-formulas">Lo que tienes que saber</h3>
+<div class="box key"><ul>
+<li>Resistencia de cálculo: \(f_{yd}=\dfrac{f_y}{\gamma_{M0}}\); S275 ⇒ \(261{,}9\) MPa; S235 ⇒ \(223{,}8\) MPa; S355 ⇒ \(338{,}1\) MPa.</li>
+<li>Tensión normal combinada: \(\sigma_{x,Ed}=\dfrac{N_{Ed}}{A}+\dfrac{M_{y,Ed}}{W_{el,y}}+\dfrac{M_{z,Ed}}{W_{el,z}}\le f_{yd}\).</li>
+<li>Criterio de von Mises: \(\sqrt{\sigma_{x}^2+3\tau^2}\le f_{yd}\).</li>
+<li>Cortante: \(\tau_{Ed}=\dfrac{V_{Ed}}{A_v}\le\dfrac{f_{yd}}{\sqrt3}\), con \(A_v\approx\) área del alma.</li>
+<li>Dimensionado a flexión: \(W_{nec}=\dfrac{M_{Ed}}{f_{yd}}\) ⇒ elegir perfil con \(W_{el}\ge W_{nec}\).</li>
+<li>Flecha: \(\delta\le\dfrac{L}{300}\) (o \(L/400\)); \(I_{nec}=\dfrac{5qL^4}{384E\,\delta_{adm}}\) para biapoyada con carga uniforme.</li>
+<li>Coeficiente de aprovechamiento: \(\eta=\dfrac{\sigma_{Ed}}{f_{yd}}\le1\).</li>
+<li>Mayoración de acciones: \(\gamma_G=1{,}35\) (permanentes), \(\gamma_Q=1{,}5\) (variables).</li></ul></div>
+<h3 id="t10-metodo">Cómo se resuelve</h3>
+<ol class="steps"><li>Obtén los <b>esfuerzos de cálculo</b> \(N_{Ed}\), \(V_{Ed}\), \(M_{Ed}\) en la sección crítica, con las acciones mayoradas.</li><li>Calcula \(W_{nec}=M_{Ed}/f_{yd}\) y <b>preselecciona</b> el perfil en el prontuario.</li><li>Comprueba la <b>tensión normal</b> combinada con el axil y los dos flectores.</li><li>Comprueba el <b>cortante</b> y, en los puntos donde coexisten σ y τ altas (encuentro ala-alma), la <b>interacción por von Mises</b>.</li><li>Comprueba la <b>flecha</b> con cargas sin mayorar frente al límite de servicio.</li><li>Si falla algo, sube de perfil (mejor canto que ancho) y repite. Da siempre el <b>aprovechamiento</b> final.</li></ol>
+<div class="box trap"><h4>Trampas típicas</h4><ul><li>Comprobar la flecha con las cargas <b>mayoradas</b>: en servicio se usan las características.</li><li>Olvidar dividir por \(\gamma_{M0}=1{,}05\) y comparar con \(f_y\) directamente.</li><li>Usar \(W_{pl}\) cuando la comprobación es <b>elástica</b> (o al revés) sin decirlo.</li><li>Tomar toda el área para el cortante: sólo cuenta el <b>área del alma</b>.</li><li>Quedarse en la resistencia y no comprobar la deformación, que en vigas largas suele ser la condición crítica.</li><li>Elegir el perfil por el área en lugar de por el <b>módulo resistente</b>.</li></ul></div>
+<h3 id="t10-problema">Problema tipo</h3>
+<div class="prob"><div class="enun"><p class="et">Enunciado</p><p>Viga biapoyada de 6 m de luz, acero S275 (\(f_y=275\) MPa, \(\gamma_{M0}=1{,}05\), \(E=210\) GPa), que soporta una carga uniforme característica de 12 kN/m (toda variable). Dimensionar el perfil IPE comprobando resistencia y flecha (\(\delta\le L/300\)). Datos de perfiles: IPE 240 (\(W_{el}=324\) cm³, \(I=3\,892\) cm⁴), IPE 270 (\(W_{el}=429\) cm³, \(I=5\,790\) cm⁴), IPE 300 (\(W_{el}=557\) cm³, \(I=8\,356\) cm⁴).</p></div>
+<details class="paso"><summary><span class="pn">✓</span>Ver solución paso a paso</summary><div class="inner"><p><b>1. Esfuerzos de cálculo.</b> Carga mayorada: \(q_{Ed}=1{,}5\cdot12=18\) kN/m.</p>
+<p>\(M_{Ed}=\dfrac{q_{Ed}L^2}{8}=\dfrac{18\cdot6^2}{8}=\mathbf{81\ kN\,m}\), \(\qquad V_{Ed}=\dfrac{q_{Ed}L}{2}=54\) kN.</p>
+<p><b>2. Módulo resistente necesario.</b> \(f_{yd}=\dfrac{275}{1{,}05}=261{,}9\) MPa.</p>
+<p>\(W_{nec}=\dfrac{M_{Ed}}{f_{yd}}=\dfrac{81\cdot10^6}{261{,}9}=309\,300\ \text{mm}^3=\mathbf{309\ cm^3}\)</p>
+<p>⇒ El <b>IPE 240</b> (324 cm³) ya cumple a resistencia: \(\sigma_{Ed}=\dfrac{81\cdot10^6}{324\cdot10^3}=250{,}0\) MPa &lt; 261,9 ✓ (aprovechamiento 95 %).</p>
+<p><b>3. Flecha</b> (cargas <b>sin mayorar</b>, q = 12 kN/m):</p>
+<p>\(\delta_{adm}=\dfrac{L}{300}=\dfrac{6\,000}{300}=20\) mm</p>
+<p>IPE 240: \(\delta=\dfrac{5qL^4}{384EI}=\dfrac{5\cdot12\cdot6^4}{384\cdot210\cdot10^6\cdot3892\cdot10^{-8}}=\dfrac{77\,760}{3{,}139\cdot10^6}=0{,}0248\ \text{m}=24{,}8\) mm &gt; 20 mm ✗ <b>no cumple</b>.</p>
+<p>IPE 270: \(I=5\,790\) cm⁴ ⇒ \(\delta=24{,}8\cdot\dfrac{3892}{5790}=16{,}7\) mm &lt; 20 mm ✓</p>
+<p><b>4. Comprobación del IPE 270</b>: \(\sigma_{Ed}=\dfrac{81\cdot10^6}{429\cdot10^3}=188{,}8\) MPa (aprovechamiento 72 %) ✓; cortante y von Mises, holgados.</p>
+<p><b>Solución: IPE 270</b>, elegido por <b>deformación</b>, no por resistencia. Es el resultado habitual en vigas de luz media: el ELS manda.</p></div></details></div>
+<h3 id="t10-auto">Autoevaluación</h3>
+<p class="muted">Responde antes de desplegar.</p><details class="paso"><summary><span class="pn">1</span>¿Con qué cargas se comprueba la flecha?</summary><div class="inner"><p>Con las cargas <b>características</b> (sin mayorar): la flecha es un estado límite de <b>servicio</b>, no de rotura. Mayorarlas sería penalizar dos veces.</p></div></details><details class="paso"><summary><span class="pn">2</span>¿Qué vale \(f_{yd}\) para un acero S275?</summary><div class="inner"><p>\(f_{yd}=\frac{275}{1{,}05}=261{,}9\) MPa. El coeficiente \(\gamma_{M0}=1{,}05\) cubre la dispersión del material.</p></div></details><details class="paso"><summary><span class="pn">3</span>¿Por qué conviene subir el canto antes que el ancho?</summary><div class="inner"><p>Porque el módulo resistente crece con \(h^2\) y la inercia con \(h^3\): un pequeño aumento de canto mejora muchísimo resistencia y flecha con poco peso añadido. Por eso los IPE son altos y estrechos.</p></div></details><details class="paso"><summary><span class="pn">4</span>¿Qué área se usa para comprobar el cortante en un perfil I?</summary><div class="inner"><p>El <b>área del alma</b> \(A_v\approx h_wt_w\), no el área total: el alma se lleva prácticamente todo el cortante.</p></div></details><details class="paso"><summary><span class="pn">5</span>¿Qué comprobaciones hay que hacer además de la tensión normal?</summary><div class="inner"><p>Cortante (\(\tau\le f_{yd}/\sqrt3\)), la <b>interacción</b> σ-τ por von Mises en el encuentro ala-alma, la <b>flecha</b> en servicio y, en piezas comprimidas, el <b>pandeo</b>.</p></div></details>
+</section>
+<nav class="pager" aria-label="Páginas"><a href="tema-09.html"><small>← Anterior</small>T9 · Deformaciones debidas a flexión y fuerzas virtuales</a><a class="nx" href="cuestiones.html"><small>Siguiente →</small>Cuestiones de teoría</a></nav>
+<p class="inicio" style="margin:36px 0 8px;text-align:center;font-size:13px;color:var(--muted)">Guía no oficial de Resistencia de Materiales (UPCT, GIEyA) · Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p>
+</main>
+</div>
+<script src="app.js"></script>
+<script src="sims.js"></script>
+</body>
+</html>

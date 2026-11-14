@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T5 El esfuerzo axil · Resistencia de Materiales · Guía para aprobar</title>
+<meta name="description" content="Resistencia de Materiales (UPCT, GIEyA): tema 5, El esfuerzo axil">
+<meta name="theme-color" content="#1f5f8b">
+<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="style.css">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="hub-bar" style="max-width:1180px;margin:0 auto;padding:10px 16px 0"><a href="https://helionacon-ui.github.io/GIEIA-UPCT/" style="display:inline-flex;align-items:center;gap:6px;font:600 13.5px/1 system-ui,sans-serif;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none">← Todas las guías GIEyA</a><p class="fecha" style="margin:6px 0 0;max-width:none;font:13px/1.45 system-ui,sans-serif;color:var(--muted)">Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p></div>
+<div class="crumb"><a href="index.html">Resistencia de Materiales</a><span class="sep">›</span><span>Resistencia de Materiales</span><span class="sep">›</span><span>T5 · El esfuerzo axil</span></div><a href="#top" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+<div class="wrap" id="top">
+<nav aria-label="Índice" class="toc"><a href="index.html" style="--tc:var(--c0)">Portada</a><div class="grp">Empezar</div><a href="index.html#cero" style="--tc:var(--c0)">Empieza aquí desde cero</a><a href="plan.html" style="--tc:var(--c0)">Cómo es la evaluación</a><a href="index.html#progreso" style="--tc:var(--c0)">Tu progreso</a><div class="grp">Elasticidad</div><a href="tema-01.html" style="--tc:var(--c2)">T1 Conceptos fundamentales de elasticidad</a><a href="tema-02.html" style="--tc:var(--c3)">T2 Criterios de plasticidad y de rotura</a><div class="grp">Resistencia de Materiales</div><a href="tema-03.html" style="--tc:var(--c4)">T3 Propiedades estáticas de la sección</a><a href="tema-04.html" style="--tc:var(--c5)">T4 El modelo de barras: leyes y diagramas de esfuerzos</a><a href="tema-05.html" style="--tc:var(--c6)" class="on" aria-current="page">T5 El esfuerzo axil</a><a href="tema-06.html" style="--tc:var(--c7)">T6 Flexión pura y flexión desviada</a><a href="tema-07.html" style="--tc:var(--c8)">T7 Flexión simple: tensiones tangenciales</a><a href="tema-08.html" style="--tc:var(--c1)">T8 Flexión compuesta y núcleo central</a><a href="tema-09.html" style="--tc:var(--c2)">T9 Deformaciones debidas a flexión y fuerzas virtuales</a><a href="tema-10.html" style="--tc:var(--c3)">T10 Dimensionado de elementos estructurales</a><div class="grp">Practicar</div><a href="cuestiones.html" style="--tc:var(--c8)">Cuestiones de teoría respondidas</a><a href="examenes.html" style="--tc:var(--c8)">Problemas tipo resueltos</a><a href="problemas.html" style="--tc:var(--c8)">Los boletines oficiales</a><a href="laboratorio.html" style="--tc:var(--c7)">Prácticas y evaluación</a><a href="formulario.html" style="--tc:var(--c8)">Formulario</a></nav>
+<main>
+<section class="sec tema" style="--tc:var(--c6);--tcs:var(--c6s)">
+<div class="sh"><span aria-hidden="true" class="badge">5</span><div class="shx"><p class="kick">Resistencia de Materiales · Tema 5</p><h2 id="t5">El esfuerzo axil</h2><div class="tags"><span class="tag">Resistencia de Materiales</span><span class="tag">1.ª prueba (40 %)</span></div></div></div>
+<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Calcular tensiones, alargamientos y desplazamientos en barras sometidas a axil, resolver problemas hiperestáticos y tratar los efectos térmicos.</p><p>Bajo <b>esfuerzo axil puro</b>, la hipótesis de secciones planas (Navier) da una distribución <b>uniforme</b> de tensiones normales en la sección:</p>
+<p>\(\sigma_x=\dfrac{N}{A}\)</p>
+<p>y el alargamiento de un tramo de propiedades constantes es \(\Delta L=\dfrac{NL}{EA}\). El producto \(EA\) es la <b>rigidez axil</b>: cuanto mayor, menos se alarga la barra.</p>
+<p>Si la barra es <b>escalonada</b> o el axil varía (peso propio, cargas intermedias), se suma tramo a tramo o se integra: \(\Delta L=\int\frac{N(x)}{E(x)A(x)}dx\).</p>
+<p><b>Efecto térmico</b>: una variación \(\Delta T\) produce, en una barra libre, \(\Delta L_T=\alpha L\Delta T\) <b>sin generar tensiones</b>. Las tensiones térmicas aparecen sólo cuando la dilatación está <b>impedida</b>: entonces la barra queda coaccionada y la tensión es \(\sigma=-E\alpha\Delta T\) (compresión si se calienta).</p>
+<p><b>Problemas hiperestáticos</b>: cuando hay más reacciones que ecuaciones de equilibrio (barra empotrada en ambos extremos, barras en paralelo, conjunto con apoyo elástico), hace falta añadir la <b>ecuación de compatibilidad</b> de desplazamientos. El esquema siempre es el mismo:</p>
+<ol><li>equilibrio (las que haya),</li><li>compatibilidad geométrica (p. ej. \(\Delta L_{total}=0\) entre empotramientos),</li><li>ley de comportamiento \(\Delta L=\frac{NL}{EA}\) para sustituir en la anterior.</li></ol></div>
+<details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 5 <span class="src">8 símbolos</span></summary><div class="inner">
+<div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">σ = N/A</td><td>Tensión normal uniforme</td><td class="u"></td></tr><tr><td class="sym">ΔL = NL/EA</td><td>Alargamiento</td><td class="u"></td></tr><tr><td class="sym">EA</td><td>Rigidez axil</td><td class="u">N</td></tr><tr><td class="sym">α</td><td>Coeficiente de dilatación</td><td class="u">1/°C</td></tr><tr><td class="sym">αLΔT</td><td>Dilatación libre</td><td class="u"></td></tr><tr><td class="sym">σ = −EαΔT</td><td>Dilatación impedida</td><td class="u"></td></tr><tr><td class="sym">compatibilidad</td><td>Ecuación geométrica</td><td class="u">hiperestáticos</td></tr><tr><td class="sym">k = EA/L</td><td>Rigidez equivalente</td><td class="u">N/m</td></tr></table></div></div></details>
+<figure class="fig"><p class="ft">Figura interactiva - axil, hiperestatismo y efectos termicos</p><div data-sim="axil"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
+<h3 id="t5-formulas">Lo que tienes que saber</h3>
+<div class="box key"><ul>
+<li>\(\sigma=\dfrac{N}{A}\); \(\varepsilon=\dfrac{\sigma}{E}=\dfrac{N}{EA}\); \(\Delta L=\dfrac{NL}{EA}\).</li>
+<li>Tramos: \(\Delta L=\sum\dfrac{N_iL_i}{E_iA_i}\); variable: \(\Delta L=\displaystyle\int_0^L\frac{N(x)}{EA(x)}dx\).</li>
+<li>Con temperatura: \(\Delta L=\sum\left(\dfrac{N_iL_i}{E_iA_i}+\alpha_iL_i\Delta T_i\right)\).</li>
+<li>Barra biempotrada con \(\Delta T\): \(\sigma=-E\alpha\Delta T\) (independiente de la longitud y del área).</li>
+<li>Peso propio (barra colgada): \(N(x)=\gamma A x\), \(\sigma_{max}=\gamma L\), \(\Delta L=\dfrac{\gamma L^2}{2E}=\dfrac{PL}{2EA}\).</li>
+<li>Rigidez de una barra como muelle: \(k=\dfrac{EA}{L}\); en paralelo se suman las rigideces, en serie las flexibilidades.</li>
+<li>Hiperestático clásico (barra ABD empotrada en A y D con carga P en B): \(R_A=P\dfrac{L_{BD}}{L_{AD}}\), \(R_D=P\dfrac{L_{AB}}{L_{AD}}\) si \(EA\) es constante.</li>
+<li>Deformación transversal: \(\varepsilon_{lat}=-\nu\varepsilon\); \(\Delta b=-\nu\dfrac{N}{EA}b\).</li></ul></div>
+<h3 id="t5-metodo">Cómo se resuelve</h3>
+<ol class="steps"><li>Dibuja el <b>diagrama de axiles</b>: tramo a tramo, cortando y equilibrando.</li><li>Comprueba si el problema es isostático (basta el equilibrio) o <b>hiperestático</b> (hará falta compatibilidad).</li><li>En hiperestático: deja una reacción como incógnita, escribe el desplazamiento total en función de ella y <b>oblígalo a cumplir la condición geométrica</b> (normalmente, desplazamiento nulo).</li><li>Suma los efectos térmicos con su signo en la misma ecuación de compatibilidad.</li><li>Calcula tensiones \(\sigma=N/A\) en cada tramo y compara con el límite admisible.</li><li>Para desplazamientos de puntos intermedios, acumula los \(\Delta L\) de los tramos anteriores.</li></ol>
+<div class="box trap"><h4>Trampas típicas</h4><ul><li>Suponer que una barra que se calienta siempre se tensiona: si está <b>libre</b>, se dilata sin tensión.</li><li>Olvidar la ecuación de <b>compatibilidad</b> en los hiperestáticos y tratar de resolver sólo con equilibrio.</li><li>Equivocar el signo de los axiles entre tramos (tracción positiva).</li><li>Usar la longitud total en \(\Delta L=NL/EA\) cuando el axil cambia de tramo a tramo.</li><li>Confundir el desplazamiento de un <b>punto</b> con el alargamiento de un <b>tramo</b>: el del punto es la suma acumulada.</li></ul></div>
+<h3 id="t5-problema">Problema tipo</h3>
+<div class="prob"><div class="enun"><p class="et">Enunciado</p><p><b>(Convocatoria de junio de 2021, problema 1)</b> Una barra de sección rectangular 100 × 50 mm y longitud \(l=2\) m, sometida a tracción \(F=50\) kN, experimenta un alargamiento \(\Delta l=1\) mm y una contracción lateral \(\Delta b=-0{,}007\) mm (medida en el lado de 50 mm). Calcular: a) el módulo de elasticidad E; b) el coeficiente de Poisson; c) la variación del lado a = 100 mm.</p></div>
+<details class="paso"><summary><span class="pn">✓</span>Ver solución paso a paso</summary><div class="inner"><p>a) Tensión y deformación longitudinal:</p>
+<p>\(\sigma=\dfrac{F}{A}=\dfrac{50\,000}{0{,}100\cdot0{,}050}=\dfrac{50\,000}{5\cdot10^{-3}}=10^7\ \text{Pa}=\mathbf{10\ MPa}\)</p>
+<p>\(\varepsilon=\dfrac{\Delta l}{l}=\dfrac{1}{2\,000}=5\cdot10^{-4}\)</p>
+<p>\(E=\dfrac{\sigma}{\varepsilon}=\dfrac{10\cdot10^6}{5\cdot10^{-4}}=\mathbf{20\ GPa}\)</p>
+<p>b) Deformación transversal medida en el lado b = 50 mm:</p>
+<p>\(\varepsilon_{lat}=\dfrac{\Delta b}{b}=\dfrac{-0{,}007}{50}=-1{,}4\cdot10^{-4}\)</p>
+<p>\(\nu=-\dfrac{\varepsilon_{lat}}{\varepsilon}=\dfrac{1{,}4\cdot10^{-4}}{5\cdot10^{-4}}=\mathbf{0{,}28}\)</p>
+<p>c) La deformación transversal es la misma en las dos direcciones del plano de la sección:</p>
+<p>\(\Delta a=\varepsilon_{lat}\cdot a=-1{,}4\cdot10^{-4}\cdot100=\mathbf{-0{,}014\ mm}\)</p>
+<p>La sección se estrecha en ambas direcciones; el área disminuye aproximadamente un \(2\nu\varepsilon=2{,}8\cdot10^{-4}\), es decir, un 0,028 %.</p>
+<p><b>Comprobación de coherencia</b>: con E = 20 GPa y ν = 0,28 se trata de un material bastante flexible (del orden del hormigón o un composite), no de acero; los datos del enunciado mandan.</p></div></details></div>
+<h3 id="t5-auto">Autoevaluación</h3>
+<p class="muted">Responde antes de desplegar.</p><details class="paso"><summary><span class="pn">1</span>¿Cuándo genera tensiones un incremento de temperatura?</summary><div class="inner"><p>Sólo cuando la dilatación está <b>impedida</b>. Una barra libre se alarga \(\alpha L\Delta T\) sin tensión; una barra biempotrada no puede alargarse y aparece \(\sigma=-E\alpha\Delta T\).</p></div></details><details class="paso"><summary><span class="pn">2</span>¿Qué ecuación hace falta en un problema hiperestático y de dónde sale?</summary><div class="inner"><p>La de <b>compatibilidad de desplazamientos</b>, que sale de la geometría: por ejemplo, el alargamiento total entre dos empotramientos debe ser cero, o dos barras unidas deben desplazarse lo mismo.</p></div></details><details class="paso"><summary><span class="pn">3</span>Una barra cuelga de su extremo superior bajo su peso propio. ¿Dónde está la tensión máxima?</summary><div class="inner"><p>En el <b>extremo superior</b>, donde el axil es todo el peso: \(\sigma_{max}=\gamma L\). El alargamiento total es \(\frac{\gamma L^2}{2E}=\frac{PL}{2EA}\), la mitad que si el peso estuviera concentrado en la punta.</p></div></details><details class="paso"><summary><span class="pn">4</span>¿Qué significa que \(EA\) sea la rigidez axil?</summary><div class="inner"><p>Que la barra se comporta como un muelle de constante \(k=EA/L\): para un mismo axil, cuanto mayor es \(EA\), menor es el alargamiento.</p></div></details><details class="paso"><summary><span class="pn">5</span>Dos barras de distinto material en paralelo soportan una carga. ¿Cómo se reparte?</summary><div class="inner"><p>En proporción a sus <b>rigideces</b>: ambas se acortan lo mismo (compatibilidad), así que \(N_i=P\frac{k_i}{\sum k_j}\) con \(k_i=E_iA_i/L_i\). La más rígida se lleva más carga.</p></div></details>
+</section>
+<nav class="pager" aria-label="Páginas"><a href="tema-04.html"><small>← Anterior</small>T4 · El modelo de barras: leyes y diagramas de esfuerzos</a><a class="nx" href="tema-06.html"><small>Siguiente →</small>T6 · Flexión pura y flexión desviada</a></nav>
+<p class="inicio" style="margin:36px 0 8px;text-align:center;font-size:13px;color:var(--muted)">Guía no oficial de Resistencia de Materiales (UPCT, GIEyA) · Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p>
+</main>
+</div>
+<script src="app.js"></script>
+<script src="sims.js"></script>
+</body>
+</html>

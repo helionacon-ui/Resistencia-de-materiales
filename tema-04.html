@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T4 El modelo de barras: leyes y diagramas de esfuerzos · Resistencia de Materiales · Guía para aprobar</title>
+<meta name="description" content="Resistencia de Materiales (UPCT, GIEyA): tema 4, El modelo de barras: leyes y diagramas de esfuerzos">
+<meta name="theme-color" content="#1f5f8b">
+<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="style.css">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="hub-bar" style="max-width:1180px;margin:0 auto;padding:10px 16px 0"><a href="https://helionacon-ui.github.io/GIEIA-UPCT/" style="display:inline-flex;align-items:center;gap:6px;font:600 13.5px/1 system-ui,sans-serif;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none">← Todas las guías GIEyA</a><p class="fecha" style="margin:6px 0 0;max-width:none;font:13px/1.45 system-ui,sans-serif;color:var(--muted)">Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p></div>
+<div class="crumb"><a href="index.html">Resistencia de Materiales</a><span class="sep">›</span><span>Resistencia de Materiales</span><span class="sep">›</span><span>T4 · El modelo de barras: leyes y diagramas de esfuerzos</span></div><a href="#top" class="totop" id="totop" aria-label="Volver arriba">↑</a>
+<div class="wrap" id="top">
+<nav aria-label="Índice" class="toc"><a href="index.html" style="--tc:var(--c0)">Portada</a><div class="grp">Empezar</div><a href="index.html#cero" style="--tc:var(--c0)">Empieza aquí desde cero</a><a href="plan.html" style="--tc:var(--c0)">Cómo es la evaluación</a><a href="index.html#progreso" style="--tc:var(--c0)">Tu progreso</a><div class="grp">Elasticidad</div><a href="tema-01.html" style="--tc:var(--c2)">T1 Conceptos fundamentales de elasticidad</a><a href="tema-02.html" style="--tc:var(--c3)">T2 Criterios de plasticidad y de rotura</a><div class="grp">Resistencia de Materiales</div><a href="tema-03.html" style="--tc:var(--c4)">T3 Propiedades estáticas de la sección</a><a href="tema-04.html" style="--tc:var(--c5)" class="on" aria-current="page">T4 El modelo de barras: leyes y diagramas de esfuerzos</a><a href="tema-05.html" style="--tc:var(--c6)">T5 El esfuerzo axil</a><a href="tema-06.html" style="--tc:var(--c7)">T6 Flexión pura y flexión desviada</a><a href="tema-07.html" style="--tc:var(--c8)">T7 Flexión simple: tensiones tangenciales</a><a href="tema-08.html" style="--tc:var(--c1)">T8 Flexión compuesta y núcleo central</a><a href="tema-09.html" style="--tc:var(--c2)">T9 Deformaciones debidas a flexión y fuerzas virtuales</a><a href="tema-10.html" style="--tc:var(--c3)">T10 Dimensionado de elementos estructurales</a><div class="grp">Practicar</div><a href="cuestiones.html" style="--tc:var(--c8)">Cuestiones de teoría respondidas</a><a href="examenes.html" style="--tc:var(--c8)">Problemas tipo resueltos</a><a href="problemas.html" style="--tc:var(--c8)">Los boletines oficiales</a><a href="laboratorio.html" style="--tc:var(--c7)">Prácticas y evaluación</a><a href="formulario.html" style="--tc:var(--c8)">Formulario</a></nav>
+<main>
+<section class="sec tema" style="--tc:var(--c5);--tcs:var(--c5s)">
+<div class="sh"><span aria-hidden="true" class="badge">4</span><div class="shx"><p class="kick">Resistencia de Materiales · Tema 4</p><h2 id="t4">El modelo de barras: leyes y diagramas de esfuerzos</h2><div class="tags"><span class="tag">Resistencia de Materiales</span><span class="tag">1.ª prueba (40 %)</span></div></div></div>
+<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Calcular reacciones en estructuras isostáticas y obtener las leyes y los diagramas de esfuerzos axil, cortante y flector, incluidas estructuras con articulaciones intermedias.</p><p>El <b>modelo de barras</b> sustituye el sólido por su directriz y reduce el estado interno a tres esfuerzos en cada sección (en el plano): <b>axil</b> \(N\), <b>cortante</b> \(V\) y <b>flector</b> \(M\). Es el problema estrella del primer parcial: suele valer entre el 50 % y el 75 % del examen.</p>
+<p><b>Isostaticidad</b>: una estructura plana es isostática si el número de reacciones incógnita es igual al de ecuaciones disponibles (3 de equilibrio más 1 por cada articulación intermedia, que aporta la condición \(\sum M=0\) a un lado de la rótula). Si sobran reacciones es hiperestática y no se resuelve sólo con equilibrio.</p>
+<p><b>Relaciones diferenciales</b> (la clave para dibujar sin calcular):</p>
+<p>\(\dfrac{dV}{dx}=-q(x)\) y \(\dfrac{dM}{dx}=V(x)\)</p>
+<p>De ahí se deduce todo: con carga <b>nula</b>, V constante y M lineal; con carga <b>uniforme</b>, V lineal y M parabólico; el flector es <b>máximo donde el cortante se anula</b>; una <b>carga puntual</b> produce un salto en V igual a la carga; un <b>momento puntual</b>, un salto en M.</p>
+<p>Criterio de signos habitual: axil positivo a <b>tracción</b>; cortante positivo el que hace girar el elemento en sentido horario; flector positivo el que <b>tracciona las fibras inferiores</b> (se dibuja hacia abajo, del lado de la tracción).</p></div>
+<details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 4 <span class="src">8 símbolos</span></summary><div class="inner">
+<div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">N</td><td>Esfuerzo axil</td><td class="u">tracción +</td></tr><tr><td class="sym">V</td><td>Esfuerzo cortante</td><td class="u">kN</td></tr><tr><td class="sym">M</td><td>Momento flector</td><td class="u">kN·m</td></tr><tr><td class="sym">q(x)</td><td>Carga repartida</td><td class="u">kN/m</td></tr><tr><td class="sym">dV/dx = −q</td><td>Relación diferencial</td><td class="u"></td></tr><tr><td class="sym">dM/dx = V</td><td>Relación diferencial</td><td class="u"></td></tr><tr><td class="sym">rótula</td><td>M = 0</td><td class="u"></td></tr><tr><td class="sym">isostático</td><td>reacciones = ecuaciones</td><td class="u"></td></tr></table></div></div></details>
+<figure class="fig"><p class="ft">Figura interactiva - reacciones, leyes y diagramas de esfuerzos</p><div data-sim="esfuerzos"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
+<h3 id="t4-formulas">Lo que tienes que saber</h3>
+<div class="box key"><ul>
+<li>Equilibrio: \(\sum F_x=0\), \(\sum F_y=0\), \(\sum M=0\); más una ecuación por cada <b>articulación</b>.</li>
+<li>\(\dfrac{dV}{dx}=-q(x)\), \(\dfrac{dM}{dx}=V(x)\), \(\dfrac{d^2M}{dx^2}=-q(x)\).</li>
+<li>\(V(x_2)-V(x_1)=-\displaystyle\int_{x_1}^{x_2}q\,dx\) (área del diagrama de carga); \(M(x_2)-M(x_1)=\displaystyle\int_{x_1}^{x_2}V\,dx\) (área del diagrama de cortante).</li>
+<li>Viga biapoyada con carga uniforme q y luz L: \(R=\dfrac{qL}{2}\), \(M_{max}=\dfrac{qL^2}{8}\) en el centro.</li>
+<li>Viga biapoyada con carga puntual P centrada: \(M_{max}=\dfrac{PL}{4}\); descentrada a distancias a y b: \(M_{max}=\dfrac{Pab}{L}\).</li>
+<li>Ménsula con carga uniforme: \(M_{empotr}=-\dfrac{qL^2}{2}\), \(V_{max}=qL\); con carga puntual en punta: \(M=-PL\).</li>
+<li>Carga triangular de valor máximo q sobre L: resultante \(\frac{qL}{2}\) a \(\frac{2L}{3}\) del extremo descargado.</li>
+<li>En una articulación intermedia, \(M=0\) siempre.</li></ul></div>
+<h3 id="t4-metodo">Cómo se resuelve</h3>
+<ol class="steps"><li>Comprueba la <b>isostaticidad</b> y dibuja el diagrama de sólido libre con todas las reacciones.</li><li>Calcula las reacciones: toma momentos en el apoyo que elimine más incógnitas y, si hay rótula, plantea \(\sum M=0\) de la parte que cuelga de ella.</li><li>Divide la barra en <b>tramos</b> entre discontinuidades (cargas puntuales, apoyos, inicio y fin de cargas repartidas).</li><li>En cada tramo, corta y plantea el equilibrio de la parte izquierda (o la que tenga menos fuerzas): obtendrás \(N(x)\), \(V(x)\) y \(M(x)\).</li><li>Dibuja los diagramas tramo a tramo usando las relaciones diferenciales y <b>acota los valores en los extremos y en los máximos</b>.</li><li><b>Comprueba</b>: el flector debe ser nulo en apoyos simples extremos y en rótulas, y el cortante debe cerrar con las reacciones.</li></ol>
+<div class="box trap"><h4>Trampas típicas</h4><ul><li>Olvidar la ecuación extra de la <b>articulación</b> y plantear mal las reacciones.</li><li>Sustituir una carga repartida por su resultante <b>antes</b> de cortar: la resultante sólo vale para calcular reacciones, no para hallar la ley dentro del tramo cargado.</li><li>Cambiar de criterio de signos a mitad del problema.</li><li>No poner el máximo del flector donde el cortante <b>pasa por cero</b>.</li><li>Dibujar el diagrama de flectores del lado equivocado: debe quedar del lado de las <b>fibras traccionadas</b>.</li><li>Olvidar los saltos: una carga puntual salta en V, un momento puntual salta en M.</li></ul></div>
+<h3 id="t4-problema">Problema tipo</h3>
+<div class="prob"><div class="enun"><p class="et">Enunciado</p><p><b>(Formato del problema largo de examen)</b> Viga ABC de 6 m: apoyo fijo en A (x = 0), apoyo móvil en B (x = 4 m) y voladizo hasta C (x = 6 m). Soporta una carga uniforme q = 10 kN/m en todo el tramo AB y una carga puntual P = 20 kN en el extremo C. Determinar reacciones, leyes de esfuerzos y diagramas.</p></div>
+<details class="paso"><summary><span class="pn">✓</span>Ver solución paso a paso</summary><div class="inner"><p><b>1. Reacciones.</b> Momentos en A (positivos antihorarios), con la resultante de la carga repartida \(qL_{AB}=40\) kN aplicada en x = 2 m:</p>
+<p>\(R_B\cdot4-40\cdot2-20\cdot6=0\ \Rightarrow\ R_B=\dfrac{80+120}{4}=\mathbf{50\ kN}\ (\uparrow)\)</p>
+<p>\(\sum F_y=0:\ R_A+50-40-20=0\ \Rightarrow\ R_A=\mathbf{10\ kN}\ (\uparrow)\)</p>
+<p>\(\sum F_x=0\Rightarrow\) no hay axil: \(N(x)=0\) en toda la viga.</p>
+<p><b>2. Tramo AB</b> \((0\le x\le4)\), cortando a la izquierda:</p>
+<p>\(V(x)=R_A-qx=10-10x\) ⇒ \(V(0)=+10\) kN, \(V(4^-)=-30\) kN; se anula en \(x=1\) m.</p>
+<p>\(M(x)=R_Ax-\dfrac{qx^2}{2}=10x-5x^2\) ⇒ \(M(0)=0\), \(M(4)=40-80=-40\) kN·m.</p>
+<p>Máximo positivo donde \(V=0\): \(M(1)=10-5=\mathbf{+5\ kN\,m}\).</p>
+<p><b>3. Tramo BC</b> \((4\le x\le6)\), más cómodo cortando por la <b>derecha</b> con \(s=6-x\):</p>
+<p>\(V=+20\) kN (constante), \(M=-20\,s=-20(6-x)\) ⇒ \(M(4)=-40\) kN·m, \(M(6)=0\).</p>
+<p><b>4. Comprobaciones.</b> El flector es nulo en el apoyo extremo A y en el extremo libre C ✓; en B coincide el valor por los dos lados (−40 kN·m) ✓; el salto del cortante en B vale \(-30\to+20\), es decir 50 kN = \(R_B\) ✓.</p>
+<p><b>5. Diagramas.</b> V: recta descendente de +10 a −30 en AB y escalón a +20 constante en BC. M: parábola con máximo +5 kN·m en x = 1 m, que cruza por cero en x = 2 m y baja hasta −40 kN·m en B, y recta de −40 a 0 en el voladizo.</p>
+<p>El punto crítico para dimensionar es el <b>apoyo B</b>, con \(|M|=40\) kN·m y \(|V|=30\) kN.</p></div></details></div>
+<h3 id="t4-auto">Autoevaluación</h3>
+<p class="muted">Responde antes de desplegar.</p><details class="paso"><summary><span class="pn">1</span>¿Dónde es máximo el momento flector?</summary><div class="inner"><p>Donde el <b>cortante se anula o cambia de signo</b>, porque \(dM/dx=V\). También hay que mirar los extremos de tramo y los puntos de aplicación de momentos puntuales.</p></div></details><details class="paso"><summary><span class="pn">2</span>¿Qué le ocurre al diagrama de cortantes bajo una carga puntual?</summary><div class="inner"><p>Da un <b>salto</b> de valor igual a la carga. Bajo un momento puntual, el que salta es el diagrama de <b>flectores</b>.</p></div></details><details class="paso"><summary><span class="pn">3</span>¿Cuánto vale el flector en una articulación intermedia?</summary><div class="inner"><p><b>Cero</b>, por definición: la rótula no transmite momento. Ésa es la ecuación adicional que permite resolver la estructura.</p></div></details><details class="paso"><summary><span class="pn">4</span>¿Puedo sustituir una carga repartida por su resultante?</summary><div class="inner"><p>Sólo para calcular <b>reacciones</b> o el equilibrio global. Para obtener la ley dentro del tramo cargado hay que integrarla: si no, el flector sale lineal en vez de parabólico.</p></div></details><details class="paso"><summary><span class="pn">5</span>Viga biapoyada de luz L con carga uniforme q: ¿reacciones y flector máximo?</summary><div class="inner"><p>\(R=qL/2\) en cada apoyo y \(M_{max}=qL^2/8\) en el centro, donde el cortante se anula.</p></div></details>
+</section>
+<nav class="pager" aria-label="Páginas"><a href="tema-03.html"><small>← Anterior</small>T3 · Propiedades estáticas de la sección</a><a class="nx" href="tema-05.html"><small>Siguiente →</small>T5 · El esfuerzo axil</a></nav>
+<p class="inicio" style="margin:36px 0 8px;text-align:center;font-size:13px;color:var(--muted)">Guía no oficial de Resistencia de Materiales (UPCT, GIEyA) · Datos tomados del curso <time datetime="2022-09">2022/23</time> (guía docente, apuntes, formularios y exámenes de 2021 a 2023) · página creada en noviembre de 2026</p>
+</main>
+</div>
+<script src="app.js"></script>
+<script src="sims.js"></script>
+</body>
+</html>
