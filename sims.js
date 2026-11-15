@@ -602,5 +602,46 @@ SIMS.dimensionado=el=>build(el,{w:660,h:460,
   ${sel?`Perfil mínimo que cumple ambas: <b>${sel[0]}</b>${selW&&selI&&selW[0]!==selI[0]?`, y lo elige la <b>deformación</b> (por resistencia habría bastado el ${selW[0]})`:''}.`:'Ningún perfil de la serie IPE cumple: habría que ir a HEB o reducir la luz.'}<br>
   <span class="hint">Con 6 m y 12 kN/m en S275 sale el IPE 270 por flecha, aunque el IPE 240 aguantaba a resistencia. Sube la luz y verás que el criterio de servicio manda cada vez más.</span>`);}});
 
+/* ---- Barra escalonada bajo tracción, paso a paso: σ = N/A, δ = N·L/(E·A) ---- */
+SIMS.axilPaso=el=>build(el,{w:660,h:380,
+ sliders:[{k:'paso',v:0,min:0,max:6,step:1,l:'paso de la resolución (0 = problema)',u:''}],
+ draw(a){a.clear();const p=a.st.paso;const g=a.g;
+  const x0=50,x1=270,x2=600,yc=170,h1=60,h2=30;
+  // secciones: tramo 1 (A = 2000 mm²) y tramo 2 (A = 1000 mm²), dibujadas con altura proporcional al área
+  g.save();g.globalAlpha=0.22;
+  g.fillStyle=C.f;g.fillRect(x0,yc-h1/2,x1-x0,h1);
+  g.fillStyle=C.b;g.fillRect(x1,yc-h2/2,x2-x1,h2);
+  g.restore();
+  g.lineWidth=2;
+  g.strokeStyle=C.f;g.strokeRect(x0,yc-h1/2,x1-x0,h1);
+  g.strokeStyle=C.b;g.strokeRect(x1,yc-h2/2,x2-x1,h2);
+  // empotramiento a la izquierda
+  a.line(x0-6,yc-50,x0-6,yc+50,C.text,4);
+  for(let y=yc-44;y<=yc+44;y+=12)a.line(x0-6,y,x0-16,y+10,C.muted,1);
+  // carga de tracción P en el extremo libre
+  a.arrow(x2+4,yc,x2+44,yc,C.d,3);
+  a.txt('P = 50 kN',x2+24,yc-30,C.d,12,'center');
+  // datos geométricos
+  a.txt('tramo 1: L₁ = 1 m, A₁ = 2000 mm²',(x0+x1)/2,yc+h1/2+18,C.f,12,'center');
+  a.txt('tramo 2: L₂ = 1,5 m, A₂ = 1000 mm²',(x1+x2)/2,yc+h1/2+18,C.b,12,'center');
+  if(p>=1)a.txt('N = P = 50 kN (tracción) en los dos tramos',330,250,C.d,13,'center');
+  if(p>=2)a.txt('σ₁ = N/A₁ = 25 MPa',160,278,C.f,13,'center');
+  if(p>=2)a.txt('σ₂ = N/A₂ = 50 MPa',435,278,C.b,13,'center');
+  if(p>=3)a.txt('δ₁ = N·L₁/(E·A₁) = 0,125 mm',160,306,C.f,13,'center');
+  if(p>=4)a.txt('δ₂ = N·L₂/(E·A₂) = 0,375 mm',435,306,C.b,13,'center');
+  if(p>=5)a.txt('δ = δ₁ + δ₂ = 0,5 mm',330,334,C.a,14,'center');
+  if(p>=6)a.txt('Tramo más tensionado: el fino (50 MPa)',330,362,C.text,13,'center');
+  const T=[
+   'Barra escalonada empotrada a la izquierda y cargada con P = 50 kN de tracción en el extremo libre. E = 200 000 MPa. Hay que calcular la tensión en cada tramo y el alargamiento total.',
+   'Con cortes en cada tramo, el esfuerzo axil vale N = 50 kN en tracción. No hay cargas intermedias, así que N es constante en cada tramo y coincide con P.',
+   'Tensiones: σ = N/A. En el tramo 1, σ₁ = 50 000 N / 2000 mm² = 25 MPa. En el tramo 2, σ₂ = 50 000 N / 1000 mm² = 50 MPa.',
+   'Alargamiento del tramo 1: δ₁ = N·L₁/(E·A₁) = 50 000 · 1000 / (200 000 · 2000) = 0,125 mm. Las longitudes van en mm para que las unidades cuadren.',
+   'Alargamiento del tramo 2: δ₂ = 50 000 · 1500 / (200 000 · 1000) = 0,375 mm. Es el tramo más largo y también el más fino.',
+   'Alargamiento total: como los tramos están en serie, se suman: δ = δ₁ + δ₂ = 0,5 mm del extremo libre respecto al empotramiento.',
+   'Resumen: la tensión máxima está en el tramo fino (50 MPa), no en el grueso. Si se diera solo el alargamiento total sin separar tramos, se perdería esa información.'
+  ];
+  a.html(`<div>${T[p]}</div>`);
+ }});
+
 document.querySelectorAll('[data-sim]').forEach(el=>{const f=SIMS[el.dataset.sim];if(f)f(el);});
 })();
