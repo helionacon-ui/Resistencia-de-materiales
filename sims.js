@@ -643,5 +643,31 @@ SIMS.axilPaso=el=>build(el,{w:660,h:380,
   a.html(`<div>${T[p]}</div>`);
  }});
 
+
+
+
+
+
+
+
+/* ---- paso a paso declarativo ---- */
+SIMS.__paso=(el,D)=>build(el,{w:D.w||660,h:D.h||340,
+ sliders:[{k:'paso',v:0,min:0,max:D.steps.length,step:1,l:'paso de la resolución (0 = enunciado)',u:''}],
+ draw(a){a.clear();const g=a.g,p=a.st.paso;
+  const it=(x,col)=>{const k=x[0];
+   if(k==='t')a.txt(x[1],x[2],x[3],col,x[4]||13,x[5]||'left');
+   else if(k==='l')a.line(x[1],x[2],x[3],x[4],col,x[5]||1.5,x[6]);
+   else if(k==='a')a.arrow(x[1],x[2],x[3],x[4],col,x[5]);
+   else if(k==='c')a.circ(x[1],x[2],x[3],col,!!x[4]);
+   else if(k==='r'){g.strokeStyle=col;g.lineWidth=1.8;if(x[5]){g.fillStyle=col;g.globalAlpha=.18;g.fillRect(x[1],x[2],x[3],x[4]);g.globalAlpha=1;}g.strokeRect(x[1],x[2],x[3],x[4]);}
+   else if(k==='p'){g.strokeStyle=col;g.lineWidth=x[2]||2;g.beginPath();x[1].forEach((q,i)=>i?g.lineTo(q[0],q[1]):g.moveTo(q[0],q[1]));g.stroke();}};
+  (D.base||[]).forEach(x=>it(x,C.muted));
+  D.steps.forEach((s,i)=>{if(i+1>p)return;const cur=(i+1===p);(s.add||[]).forEach(x=>it(x,cur?C.d:C.text));if(cur)(s.now||[]).forEach(x=>it(x,C.d));});
+  a.html('<div>'+(p===0?D.q:D.steps[p-1].text)+'</div>');}});
+/* ---- fin paso a paso declarativo ---- */
+
+/* ---- paso2 flexionPaso ---- */
+SIMS.flexionPaso=el=>SIMS.__paso(el,{"w":660,"h":330,"q":"¿Cuánto vale la tensión máxima de flexión en una viga biapoyada de 4 m con 10 kN/m y sección de 100 × 200 mm? Sube el paso.","base":[["l",60,90,320,90,3],["t","A",60,112,13,"center"],["t","B",320,112,13,"center"],["a",60.0,60,60.0,86,1.5],["a",92.5,60,92.5,86,1.5],["a",125.0,60,125.0,86,1.5],["a",157.5,60,157.5,86,1.5],["a",190.0,60,190.0,86,1.5],["a",222.5,60,222.5,86,1.5],["a",255.0,60,255.0,86,1.5],["a",287.5,60,287.5,86,1.5],["a",320.0,60,320.0,86,1.5],["t","q = 10 kN/m",190.0,52,13,"center"],["t","L = 4 m",190.0,132,13,"center"]],"steps":[{"text":"Viga biapoyada de <b>L = 4 m</b> con carga uniforme <b>q = 10 kN/m</b> y sección rectangular <b>100 × 200 mm</b> (200 mm de canto). Se pide la tensión normal máxima por flexión.","add":[]},{"text":"Por simetría las reacciones son <b>R<sub>A</sub> = R<sub>B</sub> = qL/2 = 10·4/2 = 20 kN</b>.","add":[["t","R_A = R_B = qL/2 = 20 kN",40,180,15,"left"]]},{"text":"El momento flector es una parábola: <b>M(x) = (qL/2)x − qx²/2</b>, máximo en el centro (x = L/2): <b>M<sub>máx</sub> = qL²/8 = 10·16/8 = 20 kN·m</b>.","add":[["t","M_máx = qL²/8 = 20 kN·m",40,210,15,"left"],["p",[[350.0,214.0],[356.25,221.8],[362.5,229.2],[368.75,236.2],[375.0,242.8],[381.25,249.0],[387.5,254.8],[393.75,260.2],[400.0,265.2],[406.25,269.8],[412.5,274.0],[418.75,277.8],[425.0,281.2],[431.25,284.2],[437.5,286.8],[443.75,289.0],[450.0,290.8],[456.25,292.2],[462.5,293.2],[468.75,293.8],[475.0,294.0],[481.25,293.8],[487.5,293.2],[493.75,292.2],[500.0,290.8],[506.25,289.0],[512.5,286.8],[518.75,284.2],[525.0,281.2],[531.25,277.8],[537.5,274.0],[543.75,269.8],[550.0,265.2],[556.25,260.2],[562.5,254.8],[568.75,249.0],[575.0,242.79999999999998],[581.25,236.2],[587.5,229.20000000000002],[593.75,221.8],[600.0,214.0]],2.5],["l",350,214,600,214,1.5],["t","M(x)",350,206,12,"left"],["t","20 kN·m",475,310,12,"center"]]},{"text":"Módulo resistente de la sección rectangular: <b>W = b·h²/6 = 100·200²/6 = 666667 mm³</b> (menor que si se coloca de plano: el canto está al cuadrado).","add":[["t","W = bh²/6 = 666667 mm³",40,240,15,"left"]]},{"text":"Tensión máxima: <b>σ<sub>máx</sub> = M<sub>máx</sub>/W = 20·10⁶ N·mm / 666667 mm³ = 30 MPa</b>, en la fibra superior (compresión) y en la inferior (tracción) del centro.","add":[["t","σ_máx = M/W = 30 MPa",40,270,16,"left"]]},{"text":"Comprobación: para acero con σ<sub>adm</sub> = 150 MPa el coeficiente de seguridad es 150/30 = <b>5</b>. Si la viga se colocara girada 90° (h = 100 mm), W caería a 333333 mm³ y la tensión subiría a 60 MPa.","add":[["t","girada 90°: σ = 60 MPa",40,300,14,"left"]]}]});
+/* ---- fin paso2 flexionPaso ---- */
 document.querySelectorAll('[data-sim]').forEach(el=>{const f=SIMS[el.dataset.sim];if(f)f(el);});
 })();
