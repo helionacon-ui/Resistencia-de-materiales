@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,7 +86,7 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c2);--tcs:var(--c2s)">
 <div class="sh"><span aria-hidden="true" class="badge">9</span><div class="shx"><p class="kick">Resistencia de Materiales · Tema 9</p><h2 id="t9">Deformaciones debidas a flexión y fuerzas virtuales</h2><div class="tags"><span class="tag">Resistencia de Materiales</span><span class="tag">2.ª prueba (60 %)</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Calcular giros y desplazamientos en vigas y pórticos isostáticos por integración de la elástica y, sobre todo, con el teorema de las fuerzas virtuales.</p><p>Además de resistir, una estructura debe <b>deformarse poco</b>. La ecuación de la elástica relaciona la flecha con el flector:</p>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> Calcular giros y desplazamientos en vigas y pórticos isostáticos por integración de la elástica y, sobre todo, con el teorema de las fuerzas virtuales.</p><p class="lede">Además de resistir, una estructura debe <b>deformarse poco</b>. La ecuación de la elástica relaciona la flecha con el flector:</p>
 <p>\(EI\dfrac{d^2v}{dx^2}=M(x)\)</p>
 <p>Integrando dos veces y aplicando las condiciones de contorno (flecha nula en apoyos, flecha y giro nulos en empotramientos) se obtienen giro y flecha. Es sistemático pero lento.</p>
 <p>El método que pide el examen es el <b>teorema de las fuerzas virtuales (PFV)</b>, que da directamente el desplazamiento de <b>un punto</b> en <b>una dirección</b>:</p>
@@ -57,15 +97,15 @@ details>summary{line-height:1.7;padding-block:.5em}
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">La flecha: cuánto se hunde la viga</div><svg viewBox="0 0 560 262" role="img" aria-label="Deformada de una viga biapoyada" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><line x1="40" y1="100" x2="250" y2="100" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="5 3" opacity="1" stroke-linecap="round"/><path d="M40,100 L42.1,101.4 L44.2,102.8 L46.3,104.1 L48.4,105.5 L50.5,106.9 L52.6,108.2 L54.7,109.6 L56.8,110.9 L58.9,112.3 L61,113.6 L63.1,114.9 L65.2,116.2 L67.3,117.5 L69.4,118.7 L71.5,120 L73.6,121.2 L75.7,122.4 L77.8,123.6 L79.9,124.7 L82,125.9 L84.1,127 L86.2,128 L88.3,129.1 L90.4,130.1 L92.5,131.1 L94.6,132.1 L96.7,133 L98.8,133.9 L100.9,134.8 L103,135.6 L105.1,136.4 L107.2,137.2 L109.3,137.9 L111.4,138.6 L113.5,139.2 L115.6,139.8 L117.7,140.4 L119.8,140.9 L121.9,141.4 L124,141.8 L126.1,142.3 L128.2,142.6 L130.3,142.9 L132.4,143.2 L134.5,143.5 L136.6,143.7 L138.7,143.8 L140.8,143.9 L142.9,144 L145,144 L147.1,144 L149.2,143.9 L151.3,143.8 L153.4,143.7 L155.5,143.5 L157.6,143.2 L159.7,142.9 L161.8,142.6 L163.9,142.3 L166,141.8 L168.1,141.4 L170.2,140.9 L172.3,140.4 L174.4,139.8 L176.5,139.2 L178.6,138.6 L180.7,137.9 L182.8,137.2 L184.9,136.4 L187,135.6 L189.1,134.8 L191.2,133.9 L193.3,133 L195.4,132.1 L197.5,131.1 L199.6,130.1 L201.7,129.1 L203.8,128 L205.9,127 L208,125.9 L210.1,124.7 L212.2,123.6 L214.3,122.4 L216.4,121.2 L218.5,120 L220.6,118.7 L222.7,117.5 L224.8,116.2 L226.9,114.9 L229,113.6 L231.1,112.3 L233.2,110.9 L235.3,109.6 L237.4,108.2 L239.5,106.9 L241.6,105.5 L243.7,104.1 L245.8,102.8 L247.9,101.4 L250,100" fill="none" stroke="var(--tc,var(--accent))" stroke-width="3.4" opacity="1" stroke-linejoin="round" stroke-linecap="round"/><polygon points="46,106 36,126 56,126" fill="var(--muted)" stroke="var(--fg)" stroke-width="2" opacity="0.5" stroke-linejoin="round" stroke-linecap="round"/><polygon points="244,106 234,126 254,126" fill="var(--muted)" stroke="var(--fg)" stroke-width="2" opacity="0.5" stroke-linejoin="round" stroke-linecap="round"/><line x1="145" y1="100" x2="145" y2="133.9" stroke="var(--warn,#b8730c)" stroke-width="2.6" opacity="1" stroke-linecap="round"/><polygon points="145,142 141.3,133.8 148.7,133.8" fill="var(--warn,#b8730c)"/><text x="154" y="128" fill="var(--warn,#b8730c)" font-size="13" text-anchor="start" font-weight="700" opacity="1">f</text><text x="24" y="226" fill="var(--tc,var(--accent))" font-size="13" text-anchor="start" font-weight="700" opacity="1">f = 5·q·L⁴ / (384·E·I)  (carga uniforme)</text><text x="330" y="56" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">E·I: rigidez a flexión.</text><text x="330" y="78" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">Doble altura → 8×</text><text x="330" y="100" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">menos flecha.</text><text x="330" y="133" fill="var(--muted)" font-size="13.5" text-anchor="start" opacity="1">Límite típico:</text><text x="330" y="155" fill="var(--muted)" font-size="13.5" text-anchor="start" opacity="1">f ≤ L / 300–400.</text></svg><figcaption>La deformada se obtiene integrando la curvatura M/(EI); la flecha crece con L⁴ y baja con la rigidez EI.</figcaption></figure><figure class="ill"><div class="ill-t">Para medir un desplazamiento: una carga unidad y dos diagramas</div><svg viewBox="0 0 560 262" role="img" aria-label="Principio de fuerzas virtuales" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><line x1="40" y1="70" x2="250" y2="70" stroke="var(--fg)" stroke-width="4" opacity="1" stroke-linecap="round"/><polygon points="46,76 36,96 56,96" fill="var(--muted)" stroke="var(--fg)" stroke-width="2" opacity="0.5" stroke-linejoin="round" stroke-linecap="round"/><polygon points="244,76 234,96 254,96" fill="var(--muted)" stroke="var(--fg)" stroke-width="2" opacity="0.5" stroke-linejoin="round" stroke-linecap="round"/><line x1="120" y1="30" x2="120" y2="57" stroke="var(--warn,#b8730c)" stroke-width="3" opacity="1" stroke-linecap="round"/><polygon points="120,66 115.9,56.9 124.1,56.9" fill="var(--warn,#b8730c)"/><text x="130" y="38" fill="var(--warn,#b8730c)" font-size="11.5" text-anchor="start" font-weight="700" opacity="1">Q real</text><line x1="40" y1="150" x2="250" y2="150" stroke="var(--muted)" stroke-width="1.2" opacity="1" stroke-linecap="round"/><polygon points="40,150 120,118 250,150" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.4" opacity="0.2" stroke-linejoin="round" stroke-linecap="round"/><text x="26" y="124" fill="var(--tc,var(--accent))" font-size="12" text-anchor="end" font-weight="700" opacity="1">M</text><line x1="40" y1="206" x2="250" y2="206" stroke="var(--muted)" stroke-width="1.2" opacity="1" stroke-linecap="round"/><polygon points="40,206 145,176 250,206" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="2.4" opacity="0.2" stroke-linejoin="round" stroke-linecap="round"/><text x="26" y="180" fill="var(--c5,#c43d63)" font-size="12" text-anchor="end" font-weight="700" opacity="1">m</text><text x="330" y="56" fill="var(--tc,var(--accent))" font-size="13.5" text-anchor="start" font-weight="700" opacity="1">δ = ∫ M · m / (E·I) dx</text><text x="330" y="89" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">M: momentos reales.</text><text x="330" y="111" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">m: con carga unidad</text><text x="330" y="133" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">en el punto buscado.</text><text x="330" y="166" fill="var(--muted)" font-size="13.5" text-anchor="start" opacity="1">Integrar el producto</text><text x="330" y="188" fill="var(--muted)" font-size="13.5" text-anchor="start" opacity="1">de dos diagramas.</text></svg><figcaption>El desplazamiento de un punto se obtiene multiplicando el diagrama de momentos real por el de una carga virtual unidad aplicada allí.</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 9 <span class="src">8 símbolos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">EIv″ = M</td><td>Ecuación de la elástica</td><td class="u"></td></tr><tr><td class="sym">δ</td><td>Flecha</td><td class="u">mm</td></tr><tr><td class="sym">θ</td><td>Giro</td><td class="u">rad</td></tr><tr><td class="sym">PFV</td><td>1·δ = ∫M*M/EI dx</td><td class="u"></td></tr><tr><td class="sym">M*</td><td>Momento del sistema virtual</td><td class="u"></td></tr><tr><td class="sym">carga unidad</td><td>Fuerza (δ) o momento (θ)</td><td class="u"></td></tr><tr><td class="sym">5qL⁴/384EI</td><td>Biapoyada con q</td><td class="u"></td></tr><tr><td class="sym">PL³/3EI</td><td>Ménsula con P</td><td class="u"></td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Figura interactiva - flecha y estados limite de servicio</p><div data-sim="flecha"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">La flecha: cuánto se curva una viga</p><p>Una viga cargada se deforma: su eje describe la <b>elástica</b> \(v(x)\), cuya curvatura es proporcional al momento: \(EI\,v''=M(x)\). Integrar dos veces (con las condiciones de contorno) da el giro \(\theta=v'\) y la flecha \(v\). Para casos típicos hay fórmulas: biapoyada con \(q\): \(\delta=\dfrac{5qL^4}{384EI}\); biapoyada con \(P\) centrada: \(\dfrac{PL^3}{48EI}\); ménsula con \(P\) en la punta: \(\dfrac{PL^3}{3EI}\). La flecha crece con \(L^3\) o \(L^4\): duplicar la luz multiplica la flecha por 8–16, mientras que la rigidez \(EI\) la reduce linealmente.</p><p class="ft">Fuerzas virtuales: el método general</p><p>Para un desplazamiento en un punto cualquiera: se aplica en ese punto y dirección una <b>carga virtual unidad</b> (un momento unidad si se pide un giro) sobre la estructura descargada y se calcula su ley de momentos \(M^*(x)\). Entonces \(1\cdot\delta=\sum\int\dfrac{M^*M}{EI}dx\), con \(M\) el momento de las cargas reales. Las integrales se resuelven con la tabla de Mohr (p. ej., triángulo × triángulo con el mismo vértice: \(\tfrac L3M^*M\)). El criterio de signos debe ser el <b>mismo</b> en los dos sistemas.</p>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">La flecha: cuánto se curva una viga</p><p class="lede">Una viga cargada se deforma: su eje describe la <b>elástica</b> \(v(x)\), cuya curvatura es proporcional al momento: \(EI\,v''=M(x)\). Integrar dos veces (con las condiciones de contorno) da el giro \(\theta=v'\) y la flecha \(v\). Para casos típicos hay fórmulas: biapoyada con \(q\): \(\delta=\dfrac{5qL^4}{384EI}\); biapoyada con \(P\) centrada: \(\dfrac{PL^3}{48EI}\); ménsula con \(P\) en la punta: \(\dfrac{PL^3}{3EI}\). La flecha crece con \(L^3\) o \(L^4\): duplicar la luz multiplica la flecha por 8–16, mientras que la rigidez \(EI\) la reduce linealmente.</p><p class="ft">Fuerzas virtuales: el método general</p><p>Para un desplazamiento en un punto cualquiera: se aplica en ese punto y dirección una <b>carga virtual unidad</b> (un momento unidad si se pide un giro) sobre la estructura descargada y se calcula su ley de momentos \(M^*(x)\). Entonces \(1\cdot\delta=\sum\int\dfrac{M^*M}{EI}dx\), con \(M\) el momento de las cargas reales. Las integrales se resuelven con la tabla de Mohr (p. ej., triángulo × triángulo con el mismo vértice: \(\tfrac L3M^*M\)). El criterio de signos debe ser el <b>mismo</b> en los dos sistemas.</p>
 <figure class="fig"><p class="ft">Flecha de una viga</p><div data-sim="flecha"></div><figcaption>Variando la luz y la rigidez se ve cómo cambia la elástica.</figcaption></figure></div><!--/amp1--><!--deep--><h3 id="t9-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Deformación de vigas: la ecuación diferencial</h4>
+<h4><span class="hn">1</span>Deformación de vigas: la ecuación diferencial</h4>
 <div class="box key deepnote"><b>Idea clave.</b> la curva de deformación de una viga, \(v(x)\), se obtiene integrando la curvatura, que es proporcional al momento flector.</div>
 <div class="eqd">\[EI\,\frac{\mathrm d^2v}{\mathrm dx^2}=-M(x)\]</div>
 <p>Integrando una vez se obtiene el giro \(\theta=\mathrm dv/\mathrm dx\) y otra vez la flecha \(v\). Las constantes se fijan con las <b>condiciones de contorno</b>: apoyos (flecha nula) o empotramiento (flecha y giro nulos).</p>
 <details class="dem"><summary><span class="pn">∴</span>Método de integración directa, paso a paso</summary><div class="inner"><ol class="pasos"><li>Calcula las reacciones y escribe \(M(x)\) en cada tramo.</li><li>Integra la ecuación de la curva dos veces en cada tramo.</li><li>Impón las condiciones de contorno y de continuidad entre tramos.</li><li>Obtén la flecha máxima donde \(\theta=0\).</li></ol>
 <div class="box trap deepnote"><b>Cuidado.</b> La continuidad de la flecha y del giro entre tramos es lo que permite resolver varias constantes a la vez.</div></div></details>
-<h4>2. Teorema de Mohr y fuerzas virtuales</h4>
+<h4><span class="hn">2</span>Teorema de Mohr y fuerzas virtuales</h4>
 <p>El <b>método de Mohr</b> (carga unitaria o fuerzas virtuales) calcula un desplazamiento concreto sin resolver toda la curva. Se aplica una carga unitaria en el punto buscado y se integra el producto de los momentos.</p>
 <div class="eqd">\[\delta=\int\frac{M\,\bar M}{EI}\,\mathrm dx\]</div>
 <ul><li>\(M\) es el momento real de la carga; \(\bar M\) el momento producido por la carga unitaria.</li><li>Para barras con varios tramos, se suman las integrales de cada tramo. Las tablas de integrales facilitan el cálculo.</li></ul>

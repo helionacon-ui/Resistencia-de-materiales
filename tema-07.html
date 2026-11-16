@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,7 +86,7 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c8);--tcs:var(--c8s)">
 <div class="sh"><span aria-hidden="true" class="badge">7</span><div class="shx"><p class="kick">Resistencia de Materiales · Tema 7</p><h2 id="t7">Flexión simple: tensiones tangenciales</h2><div class="tags"><span class="tag">Resistencia de Materiales</span><span class="tag">2.ª prueba (60 %)</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Calcular la distribución de tensiones tangenciales debidas al esfuerzo cortante con la fórmula de Colignon-Jourawski y combinarlas con las normales.</p><p>La <b>flexión simple</b> es flexión con cortante: además de \(\sigma_x\) aparecen tensiones tangenciales \(\tau\). Su distribución se obtiene con la <b>fórmula de Colignon-Jourawski</b>:</p>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> Calcular la distribución de tensiones tangenciales debidas al esfuerzo cortante con la fórmula de Colignon-Jourawski y combinarlas con las normales.</p><p class="lede">La <b>flexión simple</b> es flexión con cortante: además de \(\sigma_x\) aparecen tensiones tangenciales \(\tau\). Su distribución se obtiene con la <b>fórmula de Colignon-Jourawski</b>:</p>
 <p>\(\tau=\dfrac{V\,Q(y)}{I\,b(y)}\)</p>
 <p>donde \(Q(y)\) es el <b>momento estático</b> del área situada por encima (o por debajo) de la fibra estudiada, respecto al eje neutro, y \(b(y)\) el ancho de la sección a esa altura.</p>
 <p>Consecuencias importantes:</p>
@@ -57,15 +97,15 @@ details>summary{line-height:1.7;padding-block:.5em}
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">El cortante se reparte de forma parabólica</div><svg viewBox="0 0 560 262" role="img" aria-label="Reparto parabólico de τ en sección rectangular" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="40" y="60" width="60" height="140" rx="0" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.4" opacity="0.1"/><polygon points="110,60 110,60 115.2,62.3 120.3,64.7 125.2,67 129.9,69.3 134.4,71.7 138.8,74 143,76.3 147,78.7 150.8,81 154.4,83.3 157.9,85.7 161.2,88 164.3,90.3 167.2,92.7 170,95 172.6,97.3 175,99.7 177.2,102 179.2,104.3 181.1,106.7 182.8,109 184.3,111.3 185.6,113.7 186.8,116 187.8,118.3 188.6,120.7 189.2,123 189.6,125.3 189.9,127.7 190,130 189.9,132.3 189.6,134.7 189.2,137 188.6,139.3 187.8,141.7 186.8,144 185.6,146.3 184.3,148.7 182.8,151 181.1,153.3 179.2,155.7 177.2,158 175,160.3 172.6,162.7 170,165 167.2,167.3 164.3,169.7 161.2,172 157.9,174.3 154.4,176.7 150.8,179 147,181.3 143,183.7 138.8,186 134.4,188.3 129.9,190.7 125.2,193 120.3,195.3 115.2,197.7 110,200 110,200" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="2.4" opacity="0.2" stroke-linejoin="round" stroke-linecap="round"/><line x1="110" y1="60" x2="110" y2="200" stroke="var(--fg)" stroke-width="1.4" opacity="1" stroke-linecap="round"/><text x="200" y="130" fill="var(--warn,#b8730c)" font-size="12" text-anchor="start" font-weight="700" opacity="1">τ_máx</text><circle cx="190" cy="130" r="3" fill="var(--warn,#b8730c)" stroke="none" stroke-width="1.8" opacity="1"/><text x="24" y="236" fill="var(--tc,var(--accent))" font-size="13" text-anchor="start" font-weight="700" opacity="1">τ = V·Q / (I·b)   ·   τ_máx = 1,5·V / A</text><text x="330" y="56" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">τ = 0 en los bordes</text><text x="330" y="78" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">y máxima en el eje</text><text x="330" y="100" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">neutro.</text><text x="330" y="133" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Al revés que σ de</text><text x="330" y="155" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">flexión.</text></svg><figcaption>La tensión tangencial es cero en las caras libres y alcanza 1,5 veces el valor medio V/A en el centro de una sección rectangular.</figcaption></figure><figure class="ill"><div class="ill-t">Cada parte del perfil con su función</div><svg viewBox="0 0 560 262" role="img" aria-label="Viga en I: alma soporta el cortante" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="60" y="50" width="100" height="18" rx="0" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.2" opacity="0.2"/><rect x="60" y="182" width="100" height="18" rx="0" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.2" opacity="0.2"/><rect x="100" y="68" width="20" height="114" rx="0" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="2.2" opacity="0.25"/><text x="60" y="40" fill="var(--tc,var(--accent))" font-size="11.5" text-anchor="start" font-weight="700" opacity="1">alas</text><text x="196" y="128" fill="var(--c5,#c43d63)" font-size="11.5" text-anchor="start" font-weight="700" opacity="1">alma</text><text x="24" y="230" fill="var(--fg)" font-size="12.5" text-anchor="start" font-weight="600" opacity="1">Alas → flexión;  alma → cortante</text><text x="330" y="56" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">En un perfil I, casi</text><text x="330" y="78" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">todo el cortante pasa</text><text x="330" y="100" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">por el alma.</text><text x="330" y="133" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Las alas aportan la</text><text x="330" y="155" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">inercia; el alma</text><text x="330" y="177" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">une y resiste V.</text></svg><figcaption>Las alas, alejadas del eje, dan la rigidez a flexión; el alma, delgada, transmite el cortante entre ambas.</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 7 <span class="src">7 símbolos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">τ = VQ/(Ib)</td><td>Colignon-Jourawski</td><td class="u"></td></tr><tr><td class="sym">Q(y)</td><td>Momento estático por encima</td><td class="u">mm³</td></tr><tr><td class="sym">b(y)</td><td>Ancho a esa altura</td><td class="u">mm</td></tr><tr><td class="sym">τ máx rect</td><td>1,5·V/A</td><td class="u">eje neutro</td></tr><tr><td class="sym">τ máx perfil I</td><td>≈ V/A_alma</td><td class="u"></td></tr><tr><td class="sym">q = τ·b</td><td>Flujo de cortante</td><td class="u">N/mm</td></tr><tr><td class="sym">σ_eq</td><td>√(σ²+3τ²)</td><td class="u">von Mises</td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Figura interactiva - distribucion de tensiones normales y tangenciales</p><div data-sim="tangencial"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Cortante: deslizamiento entre capas</p><p>Cuando hay cortante \(V\), las fibras de la viga tienden a deslizar unas sobre otras (como las hojas de un libro al flexarlo). Esa tensión tangencial vale \(\tau=\dfrac{VQ(y)}{I\,b(y)}\) (Colignon–Jourawski), donde \(Q\) es el <b>momento estático</b> del área situada al otro lado de la fibra, medido respecto al eje neutro, y \(b\) el ancho en esa fibra. Es <b>cero en las fibras extremas</b> y <b>máxima en el eje neutro</b> (al contrario que \(\sigma\)). En un rectángulo es una parábola con \(\tau_{max}=1{,}5\,V/A\).</p><p class="ft">Uniones y combinación con σ</p><p>El <b>flujo de cortante</b> \(q=VQ/I\) (N/mm) es la fuerza por unidad de longitud que debe transmitir una unión (soldadura, tornillos, pegado) entre dos partes de la sección. En perfiles en I, casi todo el cortante lo lleva el <b>alma</b> (\(\tau\approx V/A_{alma}\)). En el encuentro ala–alma coexisten tensiones normales y tangenciales altas: se comprueba con von Mises \(\sqrt{\sigma^2+3\tau^2}\).</p>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Cortante: deslizamiento entre capas</p><p class="lede">Cuando hay cortante \(V\), las fibras de la viga tienden a deslizar unas sobre otras (como las hojas de un libro al flexarlo). Esa tensión tangencial vale \(\tau=\dfrac{VQ(y)}{I\,b(y)}\) (Colignon–Jourawski), donde \(Q\) es el <b>momento estático</b> del área situada al otro lado de la fibra, medido respecto al eje neutro, y \(b\) el ancho en esa fibra. Es <b>cero en las fibras extremas</b> y <b>máxima en el eje neutro</b> (al contrario que \(\sigma\)). En un rectángulo es una parábola con \(\tau_{max}=1{,}5\,V/A\).</p><p class="ft">Uniones y combinación con σ</p><p>El <b>flujo de cortante</b> \(q=VQ/I\) (N/mm) es la fuerza por unidad de longitud que debe transmitir una unión (soldadura, tornillos, pegado) entre dos partes de la sección. En perfiles en I, casi todo el cortante lo lleva el <b>alma</b> (\(\tau\approx V/A_{alma}\)). En el encuentro ala–alma coexisten tensiones normales y tangenciales altas: se comprueba con von Mises \(\sqrt{\sigma^2+3\tau^2}\).</p>
 <figure class="fig"><p class="ft">Tensiones tangenciales en una sección</p><div data-sim="tangencial"></div><figcaption>Observa los saltos de \(\tau\) en el encuentro ala–alma, donde cambia el ancho \(b\).</figcaption></figure></div><!--/amp1--><!--deep--><h3 id="t7-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Tensión tangencial en una viga</h4>
+<h4><span class="hn">1</span>Tensión tangencial en una viga</h4>
 <div class="box key deepnote"><b>Idea clave.</b> al flectar, el cortante genera tensiones tangenciales en la sección. Su valor no es uniforme: es máximo en el eje neutro y nulo en los bordes libres.</div>
 <div class="eqd">\[\tau=\frac{V\,Q}{I\,b}\]</div>
 <ul><li>\(Q\) es el <b>momento estático</b> de la parte de sección por encima (o debajo) de la fibra analizada respecto al eje neutro.</li><li>\(b\) es el ancho de la sección en esa fibra.</li></ul>
 <details class="dem"><summary><span class="pn">∴</span>Ejemplo: sección rectangular</summary><div class="inner"><p>Para una sección de ancho \(b\) y altura \(h\), la tensión tangencial sigue una parábola. Su máximo vale \(\tau_{max}=\dfrac{3V}{2A}\) (un 50 % más que la tensión media \(V/A\)).</p>
 <div class="box trap deepnote"><b>Cuidado.</b> En perfiles de pared fina, como los IPN, casi todo el cortante lo soporta el <b>alma</b>. Es ahí donde se comprueba.</div></div></details>
-<h4>2. Flujo de cortante</h4>
+<h4><span class="hn">2</span>Flujo de cortante</h4>
 <p>En secciones de pared delgada, el flujo \(q=\tau\,t\) es un concepto útil para ver cómo se reparte el cortante. Se obtiene con \(q=VQ/I\).</p>
 <ul><li>El <b>centro de cortante</b> es el punto por el que debe pasar la carga para que no haya torsión. Si la carga pasa por otro punto, la viga también gira.</li></ul>
 </div><!--/deep--><h3 id="t7-formulas">Lo que tienes que saber</h3>

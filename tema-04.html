@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,24 +86,24 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c5);--tcs:var(--c5s)">
 <div class="sh"><span aria-hidden="true" class="badge">4</span><div class="shx"><p class="kick">Resistencia de Materiales · Tema 4</p><h2 id="t4">El modelo de barras: leyes y diagramas de esfuerzos</h2><div class="tags"><span class="tag">Resistencia de Materiales</span><span class="tag">1.ª prueba (40 %)</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Calcular reacciones en estructuras isostáticas y obtener las leyes y los diagramas de esfuerzos axil, cortante y flector, incluidas estructuras con articulaciones intermedias.</p><p>El <b>modelo de barras</b> sustituye el sólido por su directriz y reduce el estado interno a tres esfuerzos en cada sección (en el plano): <b>axil</b> \(N\), <b>cortante</b> \(V\) y <b>flector</b> \(M\). Es el problema estrella del primer parcial: suele valer entre el 50 % y el 75 % del examen.</p>
-<p><b>Isostaticidad</b>: una estructura plana es isostática si el número de reacciones incógnita es igual al de ecuaciones disponibles (3 de equilibrio más 1 por cada articulación intermedia, que aporta la condición \(\sum M=0\) a un lado de la rótula). Si sobran reacciones es hiperestática y no se resuelve sólo con equilibrio.</p>
-<p><b>Relaciones diferenciales</b> (la clave para dibujar sin calcular):</p>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> Calcular reacciones en estructuras isostáticas y obtener las leyes y los diagramas de esfuerzos axil, cortante y flector, incluidas estructuras con articulaciones intermedias.</p><p class="lede">El <b>modelo de barras</b> sustituye el sólido por su directriz y reduce el estado interno a tres esfuerzos en cada sección (en el plano): <b>axil</b> \(N\), <b>cortante</b> \(V\) y <b>flector</b> \(M\). Es el problema estrella del primer parcial: suele valer entre el 50 % y el 75 % del examen.</p>
+<p class="run"><b>Isostaticidad:</b> una estructura plana es isostática si el número de reacciones incógnita es igual al de ecuaciones disponibles (3 de equilibrio más 1 por cada articulación intermedia, que aporta la condición \(\sum M=0\) a un lado de la rótula). Si sobran reacciones es hiperestática y no se resuelve sólo con equilibrio.</p>
+<p class="run"><b>Relaciones diferenciales:</b> (la clave para dibujar sin calcular):</p>
 <p>\(\dfrac{dV}{dx}=-q(x)\) y \(\dfrac{dM}{dx}=V(x)\)</p>
 <p>De ahí se deduce todo: con carga <b>nula</b>, V constante y M lineal; con carga <b>uniforme</b>, V lineal y M parabólico; el flector es <b>máximo donde el cortante se anula</b>; una <b>carga puntual</b> produce un salto en V igual a la carga; un <b>momento puntual</b>, un salto en M.</p>
 <p>Criterio de signos habitual: axil positivo a <b>tracción</b>; cortante positivo el que hace girar el elemento en sentido horario; flector positivo el que <b>tracciona las fibras inferiores</b> (se dibuja hacia abajo, del lado de la tracción).</p></div>
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">Cortante y momento flector a lo largo de la viga</div><svg viewBox="0 0 560 262" role="img" aria-label="Viga biapoyada con carga puntual" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><line x1="40" y1="50" x2="250" y2="50" stroke="var(--fg)" stroke-width="5" opacity="1" stroke-linecap="round"/><polygon points="46,56 36,76 56,76" fill="var(--muted)" stroke="var(--fg)" stroke-width="2" opacity="0.5" stroke-linejoin="round" stroke-linecap="round"/><polygon points="244,56 234,76 254,76" fill="var(--muted)" stroke="var(--fg)" stroke-width="2" opacity="0.5" stroke-linejoin="round" stroke-linecap="round"/><line x1="110" y1="14" x2="110" y2="37" stroke="var(--warn,#b8730c)" stroke-width="3" opacity="1" stroke-linecap="round"/><polygon points="110,46 105.9,36.9 114.1,36.9" fill="var(--warn,#b8730c)"/><text x="120" y="22" fill="var(--warn,#b8730c)" font-size="13" text-anchor="start" font-weight="700" opacity="1">F</text><line x1="40" y1="130" x2="250" y2="130" stroke="var(--muted)" stroke-width="1.2" opacity="1" stroke-linecap="round"/><polygon points="40,130 40,100 110,100 110,155 250,155 250,130" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="2.4" opacity="0.2" stroke-linejoin="round" stroke-linecap="round"/><text x="24" y="104" fill="var(--c5,#c43d63)" font-size="12" text-anchor="end" font-weight="700" opacity="1">V</text><line x1="40" y1="210" x2="250" y2="210" stroke="var(--muted)" stroke-width="1.2" opacity="1" stroke-linecap="round"/><polygon points="40,210 110,168 250,210" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.4" opacity="0.2" stroke-linejoin="round" stroke-linecap="round"/><text x="24" y="172" fill="var(--tc,var(--accent))" font-size="12" text-anchor="end" font-weight="700" opacity="1">M</text><text x="330" y="56" fill="var(--fg)" font-size="14" text-anchor="start" font-weight="600" opacity="1">V = dM/dx</text><text x="330" y="89" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">V cruza el cero donde</text><text x="330" y="111" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">M es máximo.</text><text x="330" y="144" fill="var(--muted)" font-size="13.5" text-anchor="start" opacity="1">Una carga puntual</text><text x="330" y="166" fill="var(--muted)" font-size="13.5" text-anchor="start" opacity="1">da salto en V y</text><text x="330" y="188" fill="var(--muted)" font-size="13.5" text-anchor="start" opacity="1">pico en M.</text></svg><figcaption>El cortante cambia de signo bajo la carga y el momento alcanza ahí su máximo; ambas gráficas se leen como la «historia» de los esfuerzos internos.</figcaption></figure><figure class="ill"><div class="ill-t">Lo que transmite una sección de la barra</div><svg viewBox="0 0 560 262" role="img" aria-label="Esfuerzos en una sección" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="40" y="110" width="150" height="40" rx="0" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.4" opacity="0.1"/><line x1="115" y1="86" x2="115" y2="174" stroke="var(--warn,#b8730c)" stroke-width="1.2" stroke-dasharray="4 3" opacity="1" stroke-linecap="round"/><line x1="190" y1="130" x2="227" y2="130" stroke="var(--tc,var(--accent))" stroke-width="3" opacity="1" stroke-linecap="round"/><polygon points="236,130 226.9,134.1 226.9,125.9" fill="var(--tc,var(--accent))"/><text x="242" y="134" fill="var(--tc,var(--accent))" font-size="13" text-anchor="start" font-weight="700" opacity="1">N</text><line x1="150" y1="110" x2="150" y2="85" stroke="var(--c5,#c43d63)" stroke-width="3" opacity="1" stroke-linecap="round"/><polygon points="150,76 154.1,85.1 145.9,85.1" fill="var(--c5,#c43d63)"/><text x="160" y="82" fill="var(--c5,#c43d63)" font-size="13" text-anchor="start" font-weight="700" opacity="1">V</text><path d="M67.4,138.2 A24,24 0 0 0 112.6,138.2" fill="none" stroke="var(--c6,#2c8a52)" stroke-width="2.2" opacity="1" stroke-linejoin="round" stroke-linecap="round"/><text x="90" y="114" fill="var(--c6,#2c8a52)" font-size="13" text-anchor="middle" font-weight="700" opacity="1">M</text><text x="300" y="56" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Seis esfuerzos en 3D:</text><text x="300" y="78" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">N: axil (tira/comprime)</text><text x="300" y="100" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">V: cortante</text><text x="300" y="122" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">M: flector</text><text x="300" y="144" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">T: torsor</text><text x="300" y="177" fill="var(--muted)" font-size="13.5" text-anchor="start" opacity="1">En plano: N, V y M.</text></svg><figcaption>Al cortar la barra por una sección, la parte eliminada se sustituye por las fuerzas y momentos internos que mantienen el equilibrio.</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 4 <span class="src">8 símbolos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">N</td><td>Esfuerzo axil</td><td class="u">tracción +</td></tr><tr><td class="sym">V</td><td>Esfuerzo cortante</td><td class="u">kN</td></tr><tr><td class="sym">M</td><td>Momento flector</td><td class="u">kN·m</td></tr><tr><td class="sym">q(x)</td><td>Carga repartida</td><td class="u">kN/m</td></tr><tr><td class="sym">dV/dx = −q</td><td>Relación diferencial</td><td class="u"></td></tr><tr><td class="sym">dM/dx = V</td><td>Relación diferencial</td><td class="u"></td></tr><tr><td class="sym">rótula</td><td>M = 0</td><td class="u"></td></tr><tr><td class="sym">isostático</td><td>reacciones = ecuaciones</td><td class="u"></td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Figura interactiva - reacciones, leyes y diagramas de esfuerzos</p><div data-sim="esfuerzos"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Esfuerzos: lo que «siente» cada sección</p><p>Si cortas una viga con un plano imaginario, las dos mitades se mantienen unidas por <b>esfuerzos</b>: <b>axil</b> \(N\) (tira o comprime), <b>cortante</b> \(V\) (desliza una cara sobre otra) y <b>flector</b> \(M\) (la curva). Los diagramas \(N(x)\), \(V(x)\), \(M(x)\) dicen qué sufre cada sección. Se calculan en tres pasos: <b>(1)</b> reacciones por equilibrio global; <b>(2)</b> cortar en cada tramo (entre cargas puntuales, apoyos y cambios de carga distribuida); <b>(3)</b> equilibrar la parte izquierda para obtener \(V(x)\) y \(M(x)\).</p><p class="ft">Relaciones que ahorran cuentas</p><p>Entre la carga \(q\), el cortante y el momento hay relaciones diferenciales: \(\dfrac{dV}{dx}=-q\), \(\dfrac{dM}{dx}=V\). En palabras: <b>el cortante cae lo que suma la carga</b>; <b>el momento sube o baja según el signo del cortante</b> y es máximo donde \(V=0\). Con carga uniforme, \(V\) es una recta y \(M\) una parábola; con carga puntual, \(V\) da un salto igual a la carga y \(M\) tiene un quiebro. Una <b>rótula</b> impone \(M=0\) y da una ecuación extra para calcular reacciones.</p>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Esfuerzos: lo que «siente» cada sección</p><p class="lede">Si cortas una viga con un plano imaginario, las dos mitades se mantienen unidas por <b>esfuerzos</b>: <b>axil</b> \(N\) (tira o comprime), <b>cortante</b> \(V\) (desliza una cara sobre otra) y <b>flector</b> \(M\) (la curva). Los diagramas \(N(x)\), \(V(x)\), \(M(x)\) dicen qué sufre cada sección. Se calculan en tres pasos: <b>(1)</b> reacciones por equilibrio global; <b>(2)</b> cortar en cada tramo (entre cargas puntuales, apoyos y cambios de carga distribuida); <b>(3)</b> equilibrar la parte izquierda para obtener \(V(x)\) y \(M(x)\).</p><p class="ft">Relaciones que ahorran cuentas</p><p>Entre la carga \(q\), el cortante y el momento hay relaciones diferenciales: \(\dfrac{dV}{dx}=-q\), \(\dfrac{dM}{dx}=V\). En palabras: <b>el cortante cae lo que suma la carga</b>; <b>el momento sube o baja según el signo del cortante</b> y es máximo donde \(V=0\). Con carga uniforme, \(V\) es una recta y \(M\) una parábola; con carga puntual, \(V\) da un salto igual a la carga y \(M\) tiene un quiebro. Una <b>rótula</b> impone \(M=0\) y da una ecuación extra para calcular reacciones.</p>
 <figure class="fig"><p class="ft">Diagramas de esfuerzos</p><div data-sim="esfuerzos"></div><figcaption>Mueve las cargas: el cortante salta en cada carga puntual y el momento máximo aparece donde el cortante cruza cero.</figcaption></figure></div><!--/amp1--><!--deep--><h3 id="t4-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Convenio de signos</h4>
+<h4><span class="hn">1</span>Convenio de signos</h4>
 <div class="box key deepnote"><b>Idea clave.</b> en una barra, el esfuerzo <b>axil</b> es el que tira o empuja en la dirección del eje; el <b>cortante</b> es perpendicular a él; el <b>momento flector</b> dobla la barra; el <b>momento torsor</b> la retuerce.</div>
 <ul><li>Axil <b>positivo</b> si es tracción (sale de la sección). Para cortante y momento, usa siempre el mismo convenio de signos en todo el problema.</li><li>Las <b>cargas</b> y los <b>esfuerzos</b> se relacionan: la derivada del axil es la carga repartida, la del cortante es la carga repartida y la del momento es el cortante.</li></ul>
 <div class="eqd">\[\frac{\mathrm dN}{\mathrm dx}=-q_x\qquad\frac{\mathrm dV}{\mathrm dx}=-q_y\qquad\frac{\mathrm dM}{\mathrm dx}=V\]</div>
 <details class="dem"><summary><span class="pn">∴</span>Cómo dibujar diagramas de esfuerzos</summary><div class="inner"><ol class="pasos"><li>Calcula las <b>reacciones</b> con las ecuaciones de equilibrio.</li><li>Corta la barra en cada tramo entre cargas.</li><li>Escribe la ley del esfuerzo en cada tramo en función de \(x\).</li><li>Dibuja el diagrama: una carga puntual produce un <b>salto</b> en el cortante; un momento puntual produce un <b>salto</b> en el flector.</li></ol>
 <div class="box trap deepnote"><b>Cuidado.</b> En una viga con carga uniforme, el momento es una <b>parábola</b>, y su máximo está donde el cortante es cero.</div></div></details>
-<h4>2. Pórticos y vigas</h4>
+<h4><span class="hn">2</span>Pórticos y vigas</h4>
 <p>En un pórtico plano, cada barra tiene axil, cortante y momento. Los diagramas se trazan barra a barra, con el <b>momento</b> dibujado en el lado de la fibra traccionada.</p>
 </div><!--/deep--><h3 id="t4-formulas">Lo que tienes que saber</h3>
 <div class="box key"><ul>

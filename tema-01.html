@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,7 +86,7 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c2);--tcs:var(--c2s)">
 <div class="sh"><span aria-hidden="true" class="badge">1</span><div class="shx"><p class="kick">Elasticidad · Tema 1</p><h2 id="t1">Conceptos fundamentales de elasticidad</h2><div class="tags"><span class="tag">Elasticidad</span><span class="tag">1.ª prueba (40 %)</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Manejar el tensor de tensiones y el de deformaciones, calcular el vector tensión sobre un plano, obtener tensiones y direcciones principales y relacionar tensiones con deformaciones por la ley de Hooke.</p><p>La elasticidad describe lo que ocurre <b>dentro</b> del sólido. En un punto, el estado tensional se guarda en el <b>tensor de tensiones</b> \([\sigma]\), una matriz simétrica 3×3 (\(\tau_{ij}=\tau_{ji}\), por equilibrio de momentos).</p>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> Manejar el tensor de tensiones y el de deformaciones, calcular el vector tensión sobre un plano, obtener tensiones y direcciones principales y relacionar tensiones con deformaciones por la ley de Hooke.</p><p class="lede">La elasticidad describe lo que ocurre <b>dentro</b> del sólido. En un punto, el estado tensional se guarda en el <b>tensor de tensiones</b> \([\sigma]\), una matriz simétrica 3×3 (\(\tau_{ij}=\tau_{ji}\), por equilibrio de momentos).</p>
 <p>Dado un plano de normal unitaria \(\vec n\), el <b>vector tensión</b> sale de la <b>fórmula de Cauchy</b> \(\vec t^{\,n}=[\sigma]\,\vec n\). Ese vector se descompone en dos <b>componentes intrínsecas</b>: la <b>normal</b> \(\sigma_n=\vec t^{\,n}\cdot\vec n\) (tracción si es positiva) y la <b>tangencial</b> \(\vec\tau_n=\vec t^{\,n}-\sigma_n\vec n\).</p>
 <p>Las <b>direcciones principales</b> son aquellas en las que el vector tensión es paralelo a la normal: no hay tensión tangencial. Se obtienen del problema de autovalores \(([\sigma]-\sigma I)\vec n=0\), cuya ecuación característica usa los <b>invariantes</b> \(I_1,I_2,I_3\) (invariantes porque no dependen del sistema de referencia elegido).</p>
 <p>En <b>tensión plana</b> (\(\sigma_z=\tau_{xz}=\tau_{yz}=0\)), que es el caso de casi todos los problemas de examen, todo se reduce a dos fórmulas de giro y al <b>círculo de Mohr</b>: centro en \(\frac{\sigma_x+\sigma_y}{2}\) y radio \(R=\sqrt{\left(\frac{\sigma_x-\sigma_y}{2}\right)^2+\tau_{xy}^2}\). El radio <b>es</b> la tensión tangencial máxima en el plano.</p>
@@ -55,11 +95,11 @@ details>summary{line-height:1.7;padding-block:.5em}
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">Las fuerzas por unidad de superficie en un punto</div><svg viewBox="0 0 560 262" role="img" aria-label="Elemento tensional" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="90" y="90" width="80" height="80" rx="0" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.2" opacity="0.14"/><line x1="170" y1="130" x2="206.9" y2="130" stroke="var(--tc,var(--accent))" stroke-width="2.8" opacity="1" stroke-linecap="round"/><polygon points="215,130 206.8,133.7 206.8,126.3" fill="var(--tc,var(--accent))"/><text x="222" y="134" fill="var(--tc,var(--accent))" font-size="13" text-anchor="start" font-weight="700" opacity="1">σₓ</text><line x1="90" y1="130" x2="53.1" y2="130" stroke="var(--tc,var(--accent))" stroke-width="2.8" opacity="1" stroke-linecap="round"/><polygon points="45,130 53.2,126.3 53.2,133.7" fill="var(--tc,var(--accent))"/><line x1="130" y1="90" x2="130" y2="56.1" stroke="var(--c5,#c43d63)" stroke-width="2.8" opacity="1" stroke-linecap="round"/><polygon points="130,48 133.7,56.2 126.3,56.2" fill="var(--c5,#c43d63)"/><text x="134" y="44" fill="var(--c5,#c43d63)" font-size="13" text-anchor="start" font-weight="700" opacity="1">σ_y</text><line x1="130" y1="170" x2="130" y2="203.9" stroke="var(--c5,#c43d63)" stroke-width="2.8" opacity="1" stroke-linecap="round"/><polygon points="130,212 126.3,203.8 133.7,203.8" fill="var(--c5,#c43d63)"/><line x1="172" y1="100" x2="172" y2="77.2" stroke="var(--warn,#b8730c)" stroke-width="2.4" opacity="1" stroke-linecap="round"/><polygon points="172,70 175.3,77.3 168.7,77.3" fill="var(--warn,#b8730c)"/><line x1="88" y1="160" x2="88" y2="182.8" stroke="var(--warn,#b8730c)" stroke-width="2.4" opacity="1" stroke-linecap="round"/><polygon points="88,190 84.7,182.7 91.3,182.7" fill="var(--warn,#b8730c)"/><text x="184" y="84" fill="var(--warn,#b8730c)" font-size="13" text-anchor="start" font-weight="700" opacity="1">τ</text><text x="300" y="56" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Estado plano de tensiones:</text><text x="300" y="78" fill="var(--fg)" font-size="14.5" text-anchor="start" font-weight="600" opacity="1">σₓ, σ_y y τ_xy</text><text x="300" y="111" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">σ: normal a la cara</text><text x="300" y="133" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">τ: tangente a la cara</text><text x="300" y="166" fill="var(--warn,#b8730c)" font-size="13.5" text-anchor="start" font-weight="700" opacity="1">Equilibrio: τ_xy = τ_yx</text></svg><figcaption>Un punto del sólido se describe por las tensiones que actúan sobre las caras de un elemento infinitesimal; el equilibrio de momentos obliga a que las tangenciales sean iguales.</figcaption></figure><figure class="ill"><div class="ill-t">La proporcionalidad entre tensión y deformación</div><svg viewBox="0 0 560 262" role="img" aria-label="Ley de Hooke" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><line x1="36" y1="214" x2="282.8" y2="214" stroke="var(--muted)" stroke-width="1.6" opacity="1" stroke-linecap="round"/><polygon points="290,214 282.7,217.3 282.7,210.7" fill="var(--muted)"/><line x1="36" y1="214" x2="36" y2="37.2" stroke="var(--muted)" stroke-width="1.6" opacity="1" stroke-linecap="round"/><polygon points="36,30 39.3,37.3 32.7,37.3" fill="var(--muted)"/><text x="290" y="230" fill="var(--muted)" font-size="12" text-anchor="end" font-style="italic" opacity="1">ε</text><text x="42" y="28" fill="var(--muted)" font-size="12" text-anchor="start" font-style="italic" opacity="1">σ</text><line x1="36" y1="214" x2="190" y2="70" stroke="var(--tc,var(--accent))" stroke-width="3" opacity="1" stroke-linecap="round"/><path d="M190,70 C220,60 250,62 280,72" fill="none" stroke="var(--tc,var(--accent))" stroke-width="3" opacity="1" stroke-dasharray="5 3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="190" cy="70" r="4" fill="var(--warn,#b8730c)" stroke="none" stroke-width="1.8" opacity="1"/><text x="196" y="62" fill="var(--warn,#b8730c)" font-size="12" text-anchor="start" font-weight="700" opacity="1">σ_e</text><path d="M78.4,256.4 A60,60 0 0 0 96,214" fill="none" stroke="var(--c5,#c43d63)" stroke-width="1.8" opacity="1" stroke-linejoin="round" stroke-linecap="round"/><text x="120" y="206" fill="var(--c5,#c43d63)" font-size="13.5" text-anchor="middle" font-weight="700" opacity="1">E</text><text x="330" y="56" fill="var(--tc,var(--accent))" font-size="16" text-anchor="start" font-weight="700" opacity="1">σ = E · ε</text><text x="330" y="89" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">Zona lineal: al quitar</text><text x="330" y="111" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">la carga se recupera</text><text x="330" y="133" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">la forma.</text><text x="330" y="166" fill="var(--fg)" font-size="14" text-anchor="start" font-weight="600" opacity="1">G = E / 2(1+ν)</text><text x="330" y="188" fill="var(--fg)" font-size="14" text-anchor="start" font-weight="600" opacity="1">ε_t = −ν · ε</text></svg><figcaption>En el tramo elástico, la pendiente es el módulo de Young E; la deformación transversal es −ν veces la longitudinal (módulo de Poisson).</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 1 <span class="src">9 símbolos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">[σ]</td><td>Tensor de tensiones</td><td class="u">MPa, simétrico</td></tr><tr><td class="sym">t⃗ ⁿ = [σ]n⃗</td><td>Fórmula de Cauchy</td><td class="u"></td></tr><tr><td class="sym">σₙ</td><td>Componente normal</td><td class="u">tracción +</td></tr><tr><td class="sym">τₙ</td><td>Componente tangencial</td><td class="u"></td></tr><tr><td class="sym">σ₁, σ₂, σ₃</td><td>Tensiones principales</td><td class="u">σ₁ ≥ σ₂ ≥ σ₃</td></tr><tr><td class="sym">I₁, I₂, I₃</td><td>Invariantes</td><td class="u"></td></tr><tr><td class="sym">R</td><td>Radio del círculo de Mohr</td><td class="u">= τ máx del plano</td></tr><tr><td class="sym">ε_xy = γ_xy/2</td><td>Componente tensorial</td><td class="u"></td></tr><tr><td class="sym">E, ν, G</td><td>Constantes elásticas</td><td class="u">G = E/2(1+ν)</td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Figura interactiva - circulo de Mohr y giro de ejes</p><div data-sim="mohr"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">El estado de tensión en un punto: el tensor de Cauchy</p><p>En un punto de un sólido cargado, cada plano que se imagine pasando por él soporta una <b>tensión</b> distinta: una parte perpendicular al plano (<b>normal</b>, \(\sigma\)) y otra paralela (<b>tangencial</b>, \(\tau\)). Toda esa información se resume en el <b>tensor de tensiones</b> \([\sigma]\). Si se conocen las tres tensiones sobre tres planos perpendiculares, se conoce la de cualquier otro plano con \(\vec t^{\,n}=[\sigma]\vec n\). Convenio: tracción <b>positiva</b>, compresión negativa. En tensión plana basta con \(\sigma_x\), \(\sigma_y\) y \(\tau_{xy}\).</p><p class="ft">El círculo de Mohr: girar sin fórmulas</p><p>Al girar los ejes un ángulo \(\theta\), las componentes cambian siguiendo una <b>circunferencia</b>: centro en \(\tfrac{\sigma_x+\sigma_y}2\) y radio \(R=\sqrt{(\tfrac{\sigma_x-\sigma_y}2)^2+\tau_{xy}^2}\). Sus extremos son las <b>tensiones principales</b> \(\sigma_{1,2}=\text{centro}\pm R\) (donde \(\tau=0\)); el punto más alto es la <b>cortante máxima</b> \(=R\). El ángulo en el círculo es el <b>doble</b> que el real (\(2\theta\)). Comprobación rápida: \(\sigma_x+\sigma_y\) no cambia al girar.</p></div><!--/amp1--><!--deep--><h3 id="t1-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Qué estudia la resistencia de materiales</h4>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">El estado de tensión en un punto: el tensor de Cauchy</p><p class="lede">En un punto de un sólido cargado, cada plano que se imagine pasando por él soporta una <b>tensión</b> distinta: una parte perpendicular al plano (<b>normal</b>, \(\sigma\)) y otra paralela (<b>tangencial</b>, \(\tau\)). Toda esa información se resume en el <b>tensor de tensiones</b> \([\sigma]\). Si se conocen las tres tensiones sobre tres planos perpendiculares, se conoce la de cualquier otro plano con \(\vec t^{\,n}=[\sigma]\vec n\). Convenio: tracción <b>positiva</b>, compresión negativa. En tensión plana basta con \(\sigma_x\), \(\sigma_y\) y \(\tau_{xy}\).</p><p class="ft">El círculo de Mohr: girar sin fórmulas</p><p>Al girar los ejes un ángulo \(\theta\), las componentes cambian siguiendo una <b>circunferencia</b>: centro en \(\tfrac{\sigma_x+\sigma_y}2\) y radio \(R=\sqrt{(\tfrac{\sigma_x-\sigma_y}2)^2+\tau_{xy}^2}\). Sus extremos son las <b>tensiones principales</b> \(\sigma_{1,2}=\text{centro}\pm R\) (donde \(\tau=0\)); el punto más alto es la <b>cortante máxima</b> \(=R\). El ángulo en el círculo es el <b>doble</b> que el real (\(2\theta\)). Comprobación rápida: \(\sigma_x+\sigma_y\) no cambia al girar.</p></div><!--/amp1--><!--deep--><h3 id="t1-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
+<h4><span class="hn">1</span>Qué estudia la resistencia de materiales</h4>
 <div class="box key deepnote"><b>Idea clave.</b> un sólido se deforma al cargarlo. La resistencia de materiales relaciona <b>cargas</b>, <b>tensiones</b> y <b>deformaciones</b> para comprobar que la pieza no rompe ni se deforma en exceso.</div>
 <ul><li><b>Tensión</b> \(\sigma=N/A\) (N/mm² = MPa): fuerza por unidad de área.</li><li><b>Deformación unitaria</b> \(\varepsilon=\Delta L/L\): alargamiento relativo, sin unidades.</li></ul>
-<h4>2. Ley de Hooke y constantes elásticas</h4>
+<h4><span class="hn">2</span>Ley de Hooke y constantes elásticas</h4>
 <div class="eqd">\[\sigma=E\,\varepsilon\qquad\tau=G\,\gamma\qquad G=\frac{E}{2(1+\nu)}\]</div>
 <ul><li>\(E\): módulo de elasticidad (acero, unos 210 GPa). \(G\): módulo de cortadura. \(\nu\): coeficiente de Poisson (acero, unos 0,3).</li><li>Deformación transversal: \(\varepsilon_t=-\nu\,\varepsilon_l\).</li><li>Válida solo en el <b>dominio elástico</b>: hasta el límite de proporcionalidad.</li></ul>
 <div class="box trap deepnote"><b>Cuidado.</b> La deformación es <b>reversible</b> solo dentro del rango elástico. Si se pasa del límite elástico, queda deformación permanente.</div>

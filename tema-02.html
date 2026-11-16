@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,26 +86,26 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c3);--tcs:var(--c3s)">
 <div class="sh"><span aria-hidden="true" class="badge">2</span><div class="shx"><p class="kick">Elasticidad · Tema 2</p><h2 id="t2">Criterios de plasticidad y de rotura</h2><div class="tags"><span class="tag">Elasticidad</span><span class="tag">1.ª prueba (40 %)</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Calcular la tensión equivalente de von Mises y de Tresca a partir del estado tensional y comprobar si un punto plastifica o rompe.</p><p>Los ensayos dan un único número, el <b>límite elástico</b> \(\sigma_e\) en tracción simple. Pero en una pieza real el estado es triaxial. Un <b>criterio</b> convierte ese estado complejo en una <b>tensión equivalente</b> comparable con \(\sigma_e\).</p>
-<p><b>Von Mises</b> (materiales dúctiles, el que usa el Eurocódigo): la plastificación depende de la <b>energía de distorsión</b>, no del cambio de volumen. Por eso una presión hidrostática pura (\(\sigma_1=\sigma_2=\sigma_3\)) nunca plastifica según este criterio. Es el criterio por defecto para acero.</p>
-<p><b>Tresca</b> (también dúctiles): plastifica cuando la <b>tensión tangencial máxima</b> alcanza la del ensayo de tracción, es decir \(\sigma_1-\sigma_3=\sigma_e\). Es más <b>conservador</b> que von Mises (su hexágono está inscrito en la elipse de Mises): nunca da del lado inseguro, pero desaprovecha material.</p>
-<p><b>Rankine-Lamé</b> (materiales frágiles): la rotura la causa la <b>mayor tensión principal en valor absoluto</b>, comparada con la tensión de rotura \(\sigma_u\). Es el criterio de fundición, hormigón o cerámicas, donde no hay plastificación previa.</p>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> Calcular la tensión equivalente de von Mises y de Tresca a partir del estado tensional y comprobar si un punto plastifica o rompe.</p><p class="lede">Los ensayos dan un único número, el <b>límite elástico</b> \(\sigma_e\) en tracción simple. Pero en una pieza real el estado es triaxial. Un <b>criterio</b> convierte ese estado complejo en una <b>tensión equivalente</b> comparable con \(\sigma_e\).</p>
+<p class="run"><b>Von Mises:</b> (materiales dúctiles, el que usa el Eurocódigo): la plastificación depende de la <b>energía de distorsión</b>, no del cambio de volumen. Por eso una presión hidrostática pura (\(\sigma_1=\sigma_2=\sigma_3\)) nunca plastifica según este criterio. Es el criterio por defecto para acero.</p>
+<p class="run"><b>Tresca:</b> (también dúctiles): plastifica cuando la <b>tensión tangencial máxima</b> alcanza la del ensayo de tracción, es decir \(\sigma_1-\sigma_3=\sigma_e\). Es más <b>conservador</b> que von Mises (su hexágono está inscrito en la elipse de Mises): nunca da del lado inseguro, pero desaprovecha material.</p>
+<p class="run"><b>Rankine-Lamé:</b> (materiales frágiles): la rotura la causa la <b>mayor tensión principal en valor absoluto</b>, comparada con la tensión de rotura \(\sigma_u\). Es el criterio de fundición, hormigón o cerámicas, donde no hay plastificación previa.</p>
 <p>En el plano \(\sigma_1-\sigma_2\) (tensión plana), von Mises dibuja una <b>elipse</b>, Tresca un <b>hexágono inscrito</b> en ella y Rankine un <b>cuadrado</b>. Dentro de la curva, comportamiento elástico; fuera, plastificación o rotura.</p>
 <p>En la práctica del dimensionado se usa el caso particular de von Mises para un punto con tensión normal y tangencial simultáneas (lo habitual en una viga): \(\sigma_{eq}=\sqrt{\sigma^2+3\tau^2}\).</p></div>
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">Todas las tensiones de un punto en un solo dibujo</div><svg viewBox="0 0 560 262" role="img" aria-label="Círculo de Mohr" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><line x1="30" y1="130" x2="242.8" y2="130" stroke="var(--muted)" stroke-width="1.6" opacity="1" stroke-linecap="round"/><polygon points="250,130 242.7,133.3 242.7,126.7" fill="var(--muted)"/><line x1="70" y1="210" x2="70" y2="47.2" stroke="var(--muted)" stroke-width="1.6" opacity="1" stroke-linecap="round"/><polygon points="70,40 73.3,47.3 66.7,47.3" fill="var(--muted)"/><text x="250" y="146" fill="var(--muted)" font-size="12" text-anchor="end" font-weight="700" opacity="1">σ</text><text x="78" y="46" fill="var(--muted)" font-size="12" text-anchor="start" font-weight="700" opacity="1">τ</text><circle cx="130" cy="130" r="70" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.8" opacity="0.08"/><circle cx="60" cy="130" r="4" fill="var(--c5,#c43d63)" stroke="none" stroke-width="1.8" opacity="1"/><circle cx="200" cy="130" r="4" fill="var(--c5,#c43d63)" stroke="none" stroke-width="1.8" opacity="1"/><text x="60" y="148" fill="var(--c5,#c43d63)" font-size="12.5" text-anchor="middle" font-weight="700" opacity="1">σ₂</text><text x="200" y="148" fill="var(--c5,#c43d63)" font-size="12.5" text-anchor="middle" font-weight="700" opacity="1">σ₁</text><line x1="130" y1="130" x2="130" y2="60" stroke="var(--warn,#b8730c)" stroke-width="2.4" opacity="1" stroke-linecap="round"/><circle cx="130" cy="60" r="4" fill="var(--warn,#b8730c)" stroke="none" stroke-width="1.8" opacity="1"/><text x="138" y="56" fill="var(--warn,#b8730c)" font-size="12" text-anchor="start" font-weight="700" opacity="1">τ_máx</text><text x="130" y="146" fill="var(--muted)" font-size="12" text-anchor="middle" font-weight="700" opacity="1">C</text><text x="300" y="56" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">Centro: (σₓ+σ_y)/2</text><text x="300" y="78" fill="var(--fg)" font-size="13" text-anchor="start" opacity="1">Radio: √[((σₓ−σ_y)/2)²+τ²]</text><text x="300" y="111" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">σ₁,₂ = centro ± radio</text><text x="300" y="133" fill="var(--warn,#b8730c)" font-size="14" text-anchor="start" font-weight="700" opacity="1">τ_máx = radio</text><text x="300" y="166" fill="var(--muted)" font-size="13.5" text-anchor="start" opacity="1">Cada punto del círculo =</text><text x="300" y="188" fill="var(--muted)" font-size="13.5" text-anchor="start" opacity="1">una orientación del plano.</text></svg><figcaption>Los puntos del círculo son las tensiones sobre cada plano posible; sus extremos sobre el eje horizontal son las tensiones principales.</figcaption></figure><figure class="ill"><div class="ill-t">Un límite de seguridad en el plano de las tensiones principales</div><svg viewBox="0 0 560 262" role="img" aria-label="Criterios de fallo en el plano σ₁–σ₂" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><line x1="30" y1="125" x2="242.8" y2="125" stroke="var(--muted)" stroke-width="1.6" opacity="1" stroke-linecap="round"/><polygon points="250,125 242.7,128.3 242.7,121.7" fill="var(--muted)"/><line x1="130" y1="205" x2="130" y2="37.2" stroke="var(--muted)" stroke-width="1.6" opacity="1" stroke-linecap="round"/><polygon points="130,30 133.3,37.3 126.7,37.3" fill="var(--muted)"/><text x="250" y="141" fill="var(--muted)" font-size="12" text-anchor="end" font-weight="700" opacity="1">σ₁</text><text x="136" y="34" fill="var(--muted)" font-size="12" text-anchor="start" font-weight="700" opacity="1">σ₂</text><polygon points="60,55 200,55 200,195 60,195" fill="var(--tc,var(--accent))" stroke="var(--c5,#c43d63)" stroke-width="2.4" opacity="0.0" stroke-linejoin="round" stroke-linecap="round"/><polygon points="200,55 197.8,53 195.4,51.2 192.8,49.6 190.1,48.1 187.1,46.9 184.1,45.9 180.9,45.2 177.5,44.6 174,44.3 170.4,44.2 166.7,44.3 162.9,44.6 159,45.2 155,45.9 150.9,46.9 146.8,48.1 142.6,49.5 138.4,51.2 134.2,53 130,55 125.8,57.2 121.5,59.6 117.4,62.2 113.2,64.9 109.1,67.8 105,70.9 101,74.1 97.1,77.5 93.3,81 89.6,84.6 86,88.3 82.5,92.1 79.1,96 75.9,100 72.8,104.1 69.9,108.2 67.2,112.4 64.6,116.5 62.2,120.8 60,125 58,129.2 56.2,133.4 54.5,137.6 53.1,141.8 51.9,145.9 50.9,150 50.2,154 49.6,157.9 49.3,161.7 49.2,165.4 49.3,169 49.6,172.5 50.2,175.9 50.9,179.1 51.9,182.1 53.1,185.1 54.6,187.8 56.2,190.4 58,192.8 60,195 62.2,197 64.6,198.8 67.2,200.4 69.9,201.9 72.9,203.1 75.9,204.1 79.1,204.8 82.5,205.4 86,205.7 89.6,205.8 93.3,205.7 97.1,205.4 101,204.8 105,204.1 109.1,203.1 113.2,201.9 117.4,200.5 121.6,198.8 125.8,197 130,195 134.2,192.8 138.5,190.4 142.6,187.8 146.8,185.1 150.9,182.2 155,179.1 159,175.9 162.9,172.5 166.7,169 170.4,165.4 174,161.7 177.5,157.9 180.9,154 184.1,150 187.2,145.9 190.1,141.8 192.8,137.6 195.4,133.5 197.8,129.2 200,125 202,120.8 203.8,116.6 205.5,112.4 206.9,108.2 208.1,104.1 209.1,100 209.8,96 210.4,92.1 210.7,88.3 210.8,84.6 210.7,81 210.4,77.5 209.8,74.1 209.1,70.9 208.1,67.9 206.9,64.9 205.4,62.2 203.8,59.6 202,57.2 200,55" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.6" opacity="0.1" stroke-linejoin="round" stroke-linecap="round"/><polygon points="200,125 200,55 130,55 60,125 60,195 130,195" fill="None" stroke="var(--c6,#2c8a52)" stroke-width="2.4" opacity="1" stroke-linejoin="round" stroke-linecap="round"/><text x="212" y="49" fill="var(--c6,#2c8a52)" font-size="11.5" text-anchor="start" font-weight="700" opacity="1">Tresca</text><text x="220" y="209" fill="var(--tc,var(--accent))" font-size="11.5" text-anchor="start" font-weight="700" opacity="1">Von Mises</text><text x="330" y="56" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">Dentro de la curva:</text><text x="330" y="78" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">no hay plastificación.</text><text x="330" y="111" fill="var(--c6,#2c8a52)" font-size="14" text-anchor="start" font-weight="700" opacity="1">Tresca:</text><text x="330" y="133" fill="var(--fg)" font-size="13.5" text-anchor="start" opacity="1">σ₁ − σ₃ ≤ σ_y</text><text x="330" y="155" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Von Mises:</text><text x="330" y="177" fill="var(--fg)" font-size="12.5" text-anchor="start" opacity="1">√(σ₁²−σ₁σ₂+σ₂²) ≤ σ_y</text></svg><figcaption>Tresca limita la tensión tangencial máxima y Von Mises la energía de distorsión; ambos dibujan una región dentro de la cual el material no cede.</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 2 <span class="src">8 símbolos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">σe</td><td>Límite elástico</td><td class="u">MPa</td></tr><tr><td class="sym">σu</td><td>Tensión de rotura</td><td class="u">MPa</td></tr><tr><td class="sym">σ_eq</td><td>Tensión equivalente</td><td class="u"></td></tr><tr><td class="sym">von Mises</td><td>Energía de distorsión</td><td class="u">dúctiles</td></tr><tr><td class="sym">Tresca</td><td>τ máxima</td><td class="u">conservador</td></tr><tr><td class="sym">Rankine</td><td>Mayor principal</td><td class="u">frágiles</td></tr><tr><td class="sym">f_yd</td><td>f_y/γ_M0</td><td class="u">γ_M0 = 1,05</td></tr><tr><td class="sym">n</td><td>Coeficiente de seguridad</td><td class="u">σe/σ_eq</td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Figura interactiva - von Mises, Tresca y Rankine en el plano de principales</p><div data-sim="criterios"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">¿Cuándo falla un material dúctil?</p><p>Un ensayo de tracción da el límite elástico \(\sigma_e\) para un estado simple (una sola tensión). Pero una pieza real sufre combinaciones de \(\sigma\) y \(\tau\). Los <b>criterios</b> convierten un estado complejo en una <b>tensión equivalente</b> \(\sigma_{eq}\) que se compara con \(\sigma_e\): si \(\sigma_{eq}\le\sigma_e\) no plastifica. En los metales dúctiles se usan <b>Tresca</b> (basado en la cortante máxima: \(\sigma_{eq}=\sigma_1-\sigma_3\)) y <b>von Mises</b> (energía de distorsión: más ajustado a los ensayos y por defecto en acero). En materiales frágiles, <b>Rankine</b> con la tensión de rotura.</p><p class="ft">Receta y atajos</p><p>Para una viga, el punto crítico suele tener solo \(\sigma_x\) y \(\tau\), y entonces von Mises se reduce a \(\sigma_{eq}=\sqrt{\sigma_x^2+3\tau^2}\). Si necesitas las principales, recuerda que en tensión plana \(\sigma_3=0\) <b>cuenta</b> en Tresca y Mises. Dos referencias útiles: en cortadura pura plastifica con \(\tau=0{,}577\sigma_e\) (Mises) o \(0{,}5\sigma_e\) (Tresca), de modo que Tresca es siempre algo <b>más conservador</b>. El coeficiente de seguridad es \(n=\sigma_e/\sigma_{eq}\).</p>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">¿Cuándo falla un material dúctil?</p><p class="lede">Un ensayo de tracción da el límite elástico \(\sigma_e\) para un estado simple (una sola tensión). Pero una pieza real sufre combinaciones de \(\sigma\) y \(\tau\). Los <b>criterios</b> convierten un estado complejo en una <b>tensión equivalente</b> \(\sigma_{eq}\) que se compara con \(\sigma_e\): si \(\sigma_{eq}\le\sigma_e\) no plastifica. En los metales dúctiles se usan <b>Tresca</b> (basado en la cortante máxima: \(\sigma_{eq}=\sigma_1-\sigma_3\)) y <b>von Mises</b> (energía de distorsión: más ajustado a los ensayos y por defecto en acero). En materiales frágiles, <b>Rankine</b> con la tensión de rotura.</p><p class="ft">Receta y atajos</p><p>Para una viga, el punto crítico suele tener solo \(\sigma_x\) y \(\tau\), y entonces von Mises se reduce a \(\sigma_{eq}=\sqrt{\sigma_x^2+3\tau^2}\). Si necesitas las principales, recuerda que en tensión plana \(\sigma_3=0\) <b>cuenta</b> en Tresca y Mises. Dos referencias útiles: en cortadura pura plastifica con \(\tau=0{,}577\sigma_e\) (Mises) o \(0{,}5\sigma_e\) (Tresca), de modo que Tresca es siempre algo <b>más conservador</b>. El coeficiente de seguridad es \(n=\sigma_e/\sigma_{eq}\).</p>
 </div><!--/amp1--><!--deep--><h3 id="t2-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Estados de tensión</h4>
+<h4><span class="hn">1</span>Estados de tensión</h4>
 <div class="box key deepnote"><b>Idea clave.</b> en un punto hay tensiones normales y tangenciales en cada plano. Para comprobar la rotura hay que combinarlas en una <b>tensión equivalente</b>.</div>
-<h4>2. Criterios de fallo para materiales dúctiles</h4>
+<h4><span class="hn">2</span>Criterios de fallo para materiales dúctiles</h4>
 <ul><li><b>Tresca</b> (tensión tangencial máxima): \(\sigma_{eq}=\sigma_1-\sigma_3\). Sencillo y conservador.</li><li><b>Von Mises</b> (energía de distorsión): \(\sigma_{eq}=\sqrt{\sigma_x^2+\sigma_y^2-\sigma_x\sigma_y+3\tau^2}\). El más usado en diseño.</li></ul>
 <div class="eqd">\[\sigma_{VM}=\sqrt{\sigma_1^2+\sigma_2^2-\sigma_1\sigma_2}\quad\text{(tensión plana)}\]</div>
 <p>Falla si \(\sigma_{eq}\ge\sigma_{elástico}\). El criterio de Von Mises da el límite elástico en cortadura: \(\tau_y=\sigma_y/\sqrt3\approx0{,}58\,\sigma_y\).</p>
 <details class="dem"><summary><span class="pn">∴</span>Criterio para materiales frágiles</summary><div class="inner"><ul><li><b>Rankine</b> (tensión normal máxima): falla cuando \(\sigma_1\) alcanza la resistencia a tracción o \(\sigma_3\) la de compresión.</li><li><b>Mohr-Coulomb:</b> mejor para hormigón y rocas, que resisten más a compresión que a tracción.</li></ul>
 <div class="box trap deepnote"><b>Cuidado.</b> Un material frágil no sirve para piezas sometidas a tracción pura en flexión: su rotura es repentina y sin aviso.</div></div></details>
-<h4>3. Círculo de Mohr</h4>
+<h4><span class="hn">3</span>Círculo de Mohr</h4>
 <p>Representa las tensiones de todos los planos de un punto. Su centro es \(\frac{\sigma_x+\sigma_y}{2}\) y su radio \(\sqrt{(\frac{\sigma_x-\sigma_y}{2})^2+\tau^2}\). Las tensiones principales son los extremos del diámetro sobre el eje horizontal.</p>
 <ol class="pasos"><li>Dibuja el punto \((\sigma_x,\tau_{xy})\) y el \((\sigma_y,-\tau_{xy})\).</li><li>Une los dos puntos: el corte con el eje horizontal da las tensiones principales.</li><li>La tensión tangencial máxima es el radio del círculo.</li></ol>
 </div><!--/deep--><h3 id="t2-formulas">Lo que tienes que saber</h3>

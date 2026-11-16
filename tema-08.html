@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,7 +86,7 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c1);--tcs:var(--c1s)">
 <div class="sh"><span aria-hidden="true" class="badge">8</span><div class="shx"><p class="kick">Resistencia de Materiales · Tema 8</p><h2 id="t8">Flexión compuesta y núcleo central</h2><div class="tags"><span class="tag">Resistencia de Materiales</span><span class="tag">2.ª prueba (60 %)</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> Combinar esfuerzo axil y momentos flectores, localizar el eje neutro desplazado y determinar el núcleo central de la sección.</p><p>La <b>flexión compuesta</b> es la superposición de axil y flexión, que es lo que ocurre en pilares, zapatas, presas y en cualquier carga excéntrica. La tensión normal es la suma de los tres términos:</p>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> Combinar esfuerzo axil y momentos flectores, localizar el eje neutro desplazado y determinar el núcleo central de la sección.</p><p class="lede">La <b>flexión compuesta</b> es la superposición de axil y flexión, que es lo que ocurre en pilares, zapatas, presas y en cualquier carga excéntrica. La tensión normal es la suma de los tres términos:</p>
 <p>\(\sigma_x=\dfrac{N}{A}+\dfrac{M_z}{I_z}y+\dfrac{M_y}{I_y}z\)</p>
 <p>(en ejes principales; con \(I_{yz}\neq0\) se usa la fórmula general del formulario).</p>
 <p>Una <b>carga excéntrica</b> N aplicada en el punto \((e_y,e_z)\) equivale a un axil centrado más dos momentos: \(M_z=N\,e_y\) y \(M_y=N\,e_z\). Es la forma habitual de plantear el problema.</p>
@@ -56,16 +96,16 @@ details>summary{line-height:1.7;padding-block:.5em}
 <!--ill--><div class="ill-wrap"><h3 class="ill-h" style="margin:22px 0 4px">En imágenes</h3><figure class="ill"><div class="ill-t">Empujar fuera del centro equivale a empujar y flectar</div><svg viewBox="0 0 560 262" role="img" aria-label="Flexión compuesta" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="60" y="100" width="100" height="100" rx="0" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.4" opacity="0.1"/><circle cx="130" cy="150" r="5" fill="var(--warn,#b8730c)" stroke="none" stroke-width="1.8" opacity="1"/><line x1="130" y1="60" x2="130" y2="135" stroke="var(--warn,#b8730c)" stroke-width="3" opacity="1" stroke-linecap="round"/><polygon points="130,144 125.9,134.9 134.1,134.9" fill="var(--warn,#b8730c)"/><text x="140" y="70" fill="var(--warn,#b8730c)" font-size="13" text-anchor="start" font-weight="700" opacity="1">N</text><text x="138" y="168" fill="var(--muted)" font-size="12" text-anchor="start" font-weight="700" opacity="1">e</text><line x1="110" y1="150" x2="130" y2="150" stroke="var(--muted)" stroke-width="1.6" opacity="1" stroke-linecap="round"/><line x1="110" y1="100" x2="110" y2="200" stroke="var(--muted)" stroke-width="0.01" opacity="1" stroke-linecap="round"/><circle cx="110" cy="150" r="2.5" fill="var(--fg)" stroke="none" stroke-width="1.8" opacity="1"/><text x="100" y="146" fill="var(--fg)" font-size="12" text-anchor="end" font-weight="700" opacity="1">G</text><text x="24" y="236" fill="var(--tc,var(--accent))" font-size="13.5" text-anchor="start" font-weight="700" opacity="1">σ = N/A ± N·e·y / I</text><text x="300" y="56" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">Carga excéntrica = carga</text><text x="300" y="78" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">centrada N + momento</text><text x="300" y="100" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">M = N·e.</text><text x="300" y="133" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">Si e es grande, parte</text><text x="300" y="155" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">de la sección pasa</text><text x="300" y="177" fill="var(--warn,#b8730c)" font-size="14" text-anchor="start" font-weight="700" opacity="1">a tracción.</text></svg><figcaption>Una fuerza axil aplicada con excentricidad produce en la sección un axil y un momento, y sus tensiones se superponen.</figcaption></figure><figure class="ill"><div class="ill-t">La zona donde aplicar la carga sin que nada se traccione</div><svg viewBox="0 0 560 262" role="img" aria-label="Núcleo central" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,sans-serif"><rect x="50" y="60" width="120" height="120" rx="0" fill="var(--tc,var(--accent))" stroke="var(--tc,var(--accent))" stroke-width="2.4" opacity="0.08"/><polygon points="110,100 130,120 110,140 90,120" fill="var(--c5,#c43d63)" stroke="var(--c5,#c43d63)" stroke-width="2.6" opacity="0.3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="110" cy="120" r="4" fill="var(--fg)" stroke="none" stroke-width="1.8" opacity="1"/><text x="134" y="116" fill="var(--muted)" font-size="11" text-anchor="start" font-weight="700" opacity="1">b/6</text><text x="116" y="98" fill="var(--muted)" font-size="11" text-anchor="start" font-weight="700" opacity="1">h/6</text><text x="24" y="226" fill="var(--fg)" font-size="12" text-anchor="start" font-weight="600" opacity="1">Rectángulo b × h: rombo con vértices a h/6 y b/6</text><text x="330" y="56" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">Si N cae dentro del</text><text x="330" y="78" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">núcleo, toda la sección</text><text x="330" y="100" fill="var(--fg)" font-size="14" text-anchor="start" opacity="1">trabaja a compresión.</text><text x="330" y="133" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">Clave para muros,</text><text x="330" y="155" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">cimentaciones y</text><text x="330" y="177" fill="var(--tc,var(--accent))" font-size="14" text-anchor="start" font-weight="700" opacity="1">hormigón.</text></svg><figcaption>Mientras el punto de aplicación quede dentro del núcleo central, la sección entera permanece comprimida.</figcaption></figure></div><!--/ill--><details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 8 <span class="src">7 símbolos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">σ = N/A + M/W</td><td>Flexión compuesta</td><td class="u"></td></tr><tr><td class="sym">e</td><td>Excentricidad</td><td class="u">mm</td></tr><tr><td class="sym">M = N·e</td><td>Momento equivalente</td><td class="u"></td></tr><tr><td class="sym">núcleo central</td><td>Zona sin tracciones</td><td class="u"></td></tr><tr><td class="sym">h/6</td><td>Semidiagonal (rectángulo)</td><td class="u"></td></tr><tr><td class="sym">d/8</td><td>Radio (círculo)</td><td class="u"></td></tr><tr><td class="sym">eje neutro</td><td>Desplazado del CDG</td><td class="u"></td></tr></table></div></div></details>
 <figure class="fig"><p class="ft">Figura interactiva - flexion compuesta y nucleo central</p><div data-sim="nucleo"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Carga excéntrica = axil + momento</p><p>Una carga \(N\) aplicada fuera del CDG (a una distancia \(e\)) equivale a la misma carga en el CDG más un <b>momento</b> \(Ne\). Las tensiones se suman: \(\sigma_x=\dfrac NA+\dfrac{M_z}{I_z}y+\dfrac{M_y}{I_y}z\). En un pilar de hormigón o de fábrica, que no resisten tracción, interesa que <b>toda</b> la sección quede comprimida: eso exige que la carga esté dentro de una zona alrededor del CDG, el <b>núcleo central</b>. El <b>eje neutro</b> (\(\sigma=0\)) se aleja del CDG cuanto menor es la excentricidad: está a \(y_0=-i_z^2/e_y\).</p><p class="ft">Núcleo central</p><p>El núcleo central es el conjunto de puntos de aplicación de la carga para los que el eje neutro queda fuera de la sección (o tangente). Para un <b>rectángulo</b> \(b\times h\) es un <b>rombo</b> con vértices a \(\pm h/6\) y \(\pm b/6\) (regla del «tercio medio» en cada dirección); para un <b>círculo</b> de diámetro \(d\) es un círculo de radio \(d/8\). Fuera del núcleo aparece tracción y el eje neutro corta la sección.</p>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Carga excéntrica = axil + momento</p><p class="lede">Una carga \(N\) aplicada fuera del CDG (a una distancia \(e\)) equivale a la misma carga en el CDG más un <b>momento</b> \(Ne\). Las tensiones se suman: \(\sigma_x=\dfrac NA+\dfrac{M_z}{I_z}y+\dfrac{M_y}{I_y}z\). En un pilar de hormigón o de fábrica, que no resisten tracción, interesa que <b>toda</b> la sección quede comprimida: eso exige que la carga esté dentro de una zona alrededor del CDG, el <b>núcleo central</b>. El <b>eje neutro</b> (\(\sigma=0\)) se aleja del CDG cuanto menor es la excentricidad: está a \(y_0=-i_z^2/e_y\).</p><p class="ft">Núcleo central</p><p>El núcleo central es el conjunto de puntos de aplicación de la carga para los que el eje neutro queda fuera de la sección (o tangente). Para un <b>rectángulo</b> \(b\times h\) es un <b>rombo</b> con vértices a \(\pm h/6\) y \(\pm b/6\) (regla del «tercio medio» en cada dirección); para un <b>círculo</b> de diámetro \(d\) es un círculo de radio \(d/8\). Fuera del núcleo aparece tracción y el eje neutro corta la sección.</p>
 <figure class="fig"><p class="ft">Carga excéntrica y núcleo central</p><div data-sim="nucleo"></div><figcaption>Arrastra el punto de aplicación: dentro del rombo toda la sección está comprimida; fuera, el eje neutro cruza la sección.</figcaption></figure></div><!--/amp1--><!--deep--><h3 id="t8-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Flexión compuesta: axil y momento a la vez</h4>
+<h4><span class="hn">1</span>Flexión compuesta: axil y momento a la vez</h4>
 <div class="box key deepnote"><b>Idea clave.</b> cuando un axil excéntrico actúa sobre una sección, se combina tracción o compresión con flexión. Se suman las tensiones de cada efecto.</div>
 <div class="eqd">\[\sigma=\frac{N}{A}\pm\frac{M\,y}{I}\]</div>
 <ul><li>Un axil <b>excéntrico</b> a una distancia \(e\) equivale a un axil centrado más un momento \(M=N\,e\).</li><li>Hay zonas de tracción y de compresión en la sección. La línea de tensión nula es el <b>eje neutro</b>, que no pasa por el centro de gravedad.</li></ul>
 <details class="dem"><summary><span class="pn">∴</span>Núcleo central</summary><div class="inner"><p>Es la zona alrededor del centro de gravedad en la que puede actuar el axil sin que aparezcan tensiones de tracción en la sección. Si el axil está fuera del núcleo, aparecen tracciones.</p>
 <ul><li>Para sección rectangular, el núcleo es un rombo de diagonales \(b/3\) y \(h/3\).</li><li>Para sección circular de diámetro \(D\), el núcleo es un círculo de diámetro \(D/4\).</li></ul>
 <div class="box trap deepnote"><b>Cuidado.</b> En hormigón o muros, que no resisten tracción, el axil debe quedar siempre dentro del núcleo central.</div></div></details>
-<h4>2. Muros y pilares</h4>
+<h4><span class="hn">2</span>Muros y pilares</h4>
 <p>En un pilar cargado excéntricamente, se calcula la tensión en las dos caras extremas. Si ambas son de compresión, la sección trabaja bien; si una es de tracción, hay que comprobar el material.</p>
 </div><!--/deep--><h3 id="t8-formulas">Lo que tienes que saber</h3>
 <div class="box key"><ul>
