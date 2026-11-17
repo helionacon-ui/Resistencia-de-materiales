@@ -5,7 +5,7 @@ function sup(D,x,y){D.path([[x,y],[x-14,y+22],[x+14,y+22]],C.mut,1.8,RG(C.mut,.2
 
 /* T1 círculo de Mohr */
 var sx=80,sy=20,txy=30,sc=(sx+sy)/2,Rm=Math.hypot((sx-sy)/2,txy);
-M.reg('rm-t1',M.base({title:'Círculo de Mohr: girar el elemento',H:560,dur:18,caps:[[6,'Estado plano: σₓ = 80 MPa, σᵧ = 20 MPa, τₓᵧ = 30 MPa. Al girar el elemento un ángulo θ cambian las tensiones en sus caras.'],[12,'Cada orientación es un punto del <b>círculo de Mohr</b>: girar θ el elemento equivale a recorrer 2θ en el círculo.'],[99,'Las tensiones principales están en los cortes con el eje σ: <i>σ₁,₂ = 50 ± 42,4 MPa</i>. Ahí la tangencial es nula. La tangencial máxima es el radio.']]},
+M.reg('rm-t2b',M.base({title:'Círculo de Mohr: girar el elemento',H:560,dur:18,caps:[[6,'Estado plano: σₓ = 80 MPa, σᵧ = 20 MPa, τₓᵧ = 30 MPa. Al girar el elemento un ángulo θ cambian las tensiones en sus caras.'],[12,'Cada orientación es un punto del <b>círculo de Mohr</b>: girar θ el elemento equivale a recorrer 2θ en el círculo.'],[99,'Las tensiones principales están en los cortes con el eje σ: <i>σ₁,₂ = 50 ± 42,4 MPa</i>. Ahí la tangencial es nula. La tangencial máxima es el radio.']]},
  function(D,t){var th=lerp(0,Math.PI/2,U.pp(t,18)),c2=Math.cos(2*th),s2=Math.sin(2*th),sxp=sc+(sx-sy)/2*c2+txy*s2,tp=-(sx-sy)/2*s2+txy*c2;
   var ex=140,ey=270,L=60;D.ctx.save();D.ctx.translate(ex,ey);D.ctx.rotate(-th);D.rect(-L/2,-L/2,L,L,C.w,RG(C.f,.15),2);D.arrow(L/2,0,L/2+sxp*0.6,0,C.m,2.4);D.arrow(-L/2,0,-L/2-sxp*0.6,0,C.m,2.4);D.arrow(L/2+6,L/2,L/2+6,L/2-tp*1.2,C.g,2);D.ctx.restore();
   D.text('θ = '+nf(th*180/Math.PI,1)+'°',ex,ey+110,{s:18,a:'center',c:C.m});
@@ -83,4 +83,12 @@ M.reg('rm-t10',M.base({title:'Dimensionado a pandeo: carga crítica de Euler',H:
   var A=U.axes(D,{xr:[0,1.4],yr:[0,1.4],xt:[0.5,1],yt:[0.5,1],xd:1,yd:1,xl:'P/P_{cr}',yl:'flecha'},{x:340,y:150,w:230,h:220,grid:true});D.line(A.X(1),A.Y(0),A.X(1),A.Y(1.4),C.hl,1.4,[5,4]);
   var q=[];for(var s=0;s<=P;s+=0.01)q.push([A.X(s),A.Y(s>1?Math.min(1.35,(s-1)*4):0.0)]);D.path(q,P>1?C.bad:C.m,2.6);
   D.text('P = '+nf(P,2)+'·P_{cr}    '+(P>1?'¡pandeo!':'estable'),W/2,490,{it:true,s:21,a:'center',c:P>1?C.bad:C.ok,bold:true});}));
+/* T1 ley de Hooke y coeficiente de Poisson */
+M.reg('rm-t1',M.base({title:'Ley de Hooke y coeficiente de Poisson',H:600,dur:18,caps:[[6,'Una barra de acero (A = 100 mm², L = 1 m) se carga a tracción. En la zona elástica la tensión es proporcional a la deformación: <i>σ = E·ε</i>, con E = 200 GPa.'],[12,'Al alargarse, la barra también se estrecha. La deformación transversal es <i>ε<sub>t</sub> = −ν·ε</i>, con ν ≈ 0,3 para el acero.'],[99,'El alargamiento total es <i>ΔL = F·L/(E·A)</i>. En el dibujo las deformaciones están muy exageradas: en realidad son de milésimas.']]},
+ function(D,t){var F=lerp(0,20,U.pp(t,18)),s=F*1000/100,e=s/200000,et=-0.3*e,k=150000,L0=300,H0=60,L=L0*(1+e*k/400),Hh=H0*(1+et*k/400),x0=60,cy=170;
+  D.rect(x0-20,cy-60,20,120,C.ax,RG(C.ax,.3),1.4);D.rect(x0,cy-H0/2,L0,H0,C.mut,null,1,[4,4]);D.rect(x0,cy-Hh/2,L,Hh,C.m,RG(C.m,.25),2.4);
+  if(F>0.2)D.arrow(x0+L+4,cy,x0+L+30+F*2,cy,C.bad,3);D.text('F = '+nf(F,1)+' kN',x0+L+40,cy-12,{s:16,c:C.bad,bold:true});
+  var A=U.axes(D,{xr:[0,0.0011],yr:[0,220],xt:[0.0005,0.001],yt:[100,200],xf:function(v){return nf(v*1000,1)+'‰';},yd:0,xl:'ε',yl:'σ (MPa)'},{x:100,y:270,w:420,h:200,grid:true});
+  U.plotf(D,A,function(x){return 200000*x;},C.mut,1.2,0.5);D.line(A.X(0),A.Y(0),A.X(e),A.Y(s),C.m,3);D.dot(A.X(e),A.Y(s),6,C.m);D.text('E = 200 GPa',A.X(0.0007),A.Y(170),{s:15,c:C.f});
+  U.readout(D,['σ = F/A = '+nf(s,0)+' MPa    ε = σ/E = '+nf(e*1000,3)+' ‰    ε_{t} = '+nf(et*1000,3)+' ‰','ΔL = '+nf(e*1000,3)+' mm'],530);}));
 })();

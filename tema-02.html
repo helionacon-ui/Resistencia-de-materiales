@@ -129,6 +129,7 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 <p>Falla si \(\sigma_{eq}\ge\sigma_{elástico}\). El criterio de Von Mises da el límite elástico en cortadura: \(\tau_y=\sigma_y/\sqrt3\approx0{,}58\,\sigma_y\).</p>
 <details class="dem"><summary><span class="pn">∴</span>Criterio para materiales frágiles</summary><div class="inner"><ul><li><b>Rankine</b> (tensión normal máxima): falla cuando \(\sigma_1\) alcanza la resistencia a tracción o \(\sigma_3\) la de compresión.</li><li><b>Mohr-Coulomb:</b> mejor para hormigón y rocas, que resisten más a compresión que a tracción.</li></ul>
 <div class="box trap deepnote"><b>Cuidado.</b> Un material frágil no sirve para piezas sometidas a tracción pura en flexión: su rotura es repentina y sin aviso.</div></div></details>
+<!--manim:rm-t2b--><figure class="fig manim-fig" id="anim-rm-t2b"><p class="ft">Animación · Círculo de Mohr</p><div class="manim" data-anim="rm-t2b"><p class="muted">Activa JavaScript para ver la animación.</p></div><figcaption>Se reproduce sola al llegar a ella. Puedes pausarla, arrastrar la barra para ir a cualquier instante y cambiar la velocidad. Si aparece «Prueba tú», mueve ese control para fijar tú el parámetro.</figcaption></figure><!--/manim-->
 <h4><span class="hn">3</span>Círculo de Mohr</h4>
 <p>Representa las tensiones de todos los planos de un punto. Su centro es \(\frac{\sigma_x+\sigma_y}{2}\) y su radio \(\sqrt{(\frac{\sigma_x-\sigma_y}{2})^2+\tau^2}\). Las tensiones principales son los extremos del diámetro sobre el eje horizontal.</p>
 <ol class="pasos"><li>Dibuja el punto \((\sigma_x,\tau_{xy})\) y el \((\sigma_y,-\tau_{xy})\).</li><li>Une los dos puntos: el corte con el eje horizontal da las tensiones principales.</li><li>La tensión tangencial máxima es el radio del círculo.</li></ol>
@@ -168,7 +169,7 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 </div>
 <script src="app.js"></script>
 <script src="sims.js"></script>
-<script src="anim-manim.js?v=26804" defer></script>
-<script src="anim-temas.js?v=26804" defer></script>
+<script src="anim-manim.js?v=27666" defer></script>
+<script src="anim-temas.js?v=27666" defer></script>
 </body>
 </html>
